@@ -1,13 +1,21 @@
 import React from 'react';
 
-const images = [
-  'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2600&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=2800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2700&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=2800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=2800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=2800&auto=format&fit=crop'
-];
+import { galleryConfig } from '../galleryData';
+
+// Determine which images to show based on config
+let images = [];
+
+if (galleryConfig.useBulk) {
+  const { baseUrl, filePrefix, extension, count } = galleryConfig.bulkSettings;
+  // Handle trailing slash just in case user forgets/adds it
+  const cleanBase = baseUrl.replace(/\/$/, '');
+
+  images = Array.from({ length: count }, (_, i) =>
+    `${cleanBase}/${filePrefix}${i + 1}${extension}`
+  );
+} else {
+  images = galleryConfig.manualImages;
+}
 
 const Gallery = () => {
   return (

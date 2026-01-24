@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Outfit:wght@200;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&family=Outfit:wght@200;300;400;500&display=swap');
 
 :root {
   /* Colors */
@@ -10,7 +10,7 @@
   --color-overlay: rgba(0, 0, 0, 0.4);
 
   /* Typography */
-  --font-heading: 'Cormorant Garamond', serif;
+  --font-heading: 'Antonio', sans-serif;
   --font-body: 'Outfit', sans-serif;
 
   /* Spacing */
@@ -42,9 +42,11 @@ html, body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: 300; /* Lighter weight looks more premium with this font */
   margin: 0 0 var(--spacing-sm) 0;
-  line-height: 1.2;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 p {

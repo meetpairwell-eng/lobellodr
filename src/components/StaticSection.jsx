@@ -1,17 +1,18 @@
 import React from 'react';
 
 const StaticSection = ({ image, title, subtitle }) => {
-    return (
-        <section className="static-section">
-            <div className="static-overlay"></div>
-            <div className="static-content container">
-                {subtitle && <span className="static-subtitle uppercase">{subtitle}</span>}
-                {title && <h2 className="static-title">{title}</h2>}
-            </div>
+  return (
+    <section className="static-section">
+      <div className="static-overlay"></div>
+      <div className="static-content container">
+        {subtitle && <span className="static-subtitle uppercase">{subtitle}</span>}
+        {title && <h2 className="static-title">{title}</h2>}
+      </div>
 
-            <style>{`
+      <style>{`
         .static-section {
-          position: relative;
+          position: sticky;
+          top: 0;
           height: 100vh;
           width: 100%;
           background-image: url('${image}');
@@ -21,7 +22,7 @@ const StaticSection = ({ image, title, subtitle }) => {
           display: flex;
           align-items: center;
           color: white;
-          z-index: 5;
+          z-index: 0;
         }
         
         .static-overlay {
@@ -55,8 +56,8 @@ const StaticSection = ({ image, title, subtitle }) => {
           text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 };
 
 export default StaticSection;

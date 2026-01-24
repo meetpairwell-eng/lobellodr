@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Home from './pages/Home';
+import { galleryConfig } from './galleryData';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,6 +10,20 @@ function App() {
   useEffect(() => {
     setIsInitialized(true);
   }, []);
+
+  // Manage body scroll based on state
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'auto'; // Re-enable scroll when open
+    } else {
+      document.body.style.overflow = 'hidden'; // Lock scroll initially
+    }
+
+    // Cleanup function to ensure scroll acts normally if component unmounts
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
 
   const handleOpen = () => {
     setIsOpen(true);
@@ -36,7 +51,7 @@ function App() {
         .app-wrapper {
           position: relative;
           min-height: 100vh;
-          overflow-x: hidden;
+          /* overflow-x removed to ensure sticky works */
         }
 
         /* Welcome Screen Styling */
@@ -67,7 +82,7 @@ function App() {
           left: 0;
           width: 100%;
           height: 100%;
-          background-image: url('/exterior.png');
+          background-image: url('${galleryConfig.heroImage}');
           background-size: cover;
           background-position: center;
           filter: blur(15px); /* Strong blur initially */
@@ -123,12 +138,7 @@ function App() {
         }
 
         /* Prevent scroll before opening */
-        body {
-          overflow: hidden;
-        }
-        .is-open body {
-          overflow: auto;
-        }
+        /* Scroll handling moved to JS useEffect */
       `}</style>
     </div>
   );

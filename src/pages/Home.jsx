@@ -2,6 +2,7 @@ import Hero from '../components/Hero';
 import Details from '../components/Details';
 import Gallery from '../components/Gallery';
 import StaticSection from '../components/StaticSection';
+import { galleryConfig } from '../galleryData';
 
 const Home = () => {
     return (
@@ -9,7 +10,7 @@ const Home = () => {
             <Hero />
             <Details />
             <StaticSection
-                image="/interior.png"
+                image={galleryConfig.staticImage}
                 title="Unparalleled Elegance"
                 subtitle="Interior Gallery"
             />

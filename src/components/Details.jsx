@@ -1,23 +1,30 @@
 import React from 'react';
+import { galleryConfig } from '../galleryData';
 
 const Details = () => {
   return (
     <section className="details-section">
-      <div className="container details-container">
-        <div className="details-text">
-          <span className="detail-tag uppercase text-accent">About the Property</span>
-          <h2 className="detail-heading">A Masterpiece of Modern Design</h2>
-          <p>
-            Experience the pinnacle of luxury living in this architectural masterpiece.
-            Featuring panoramic views, state-of-the-art amenities, and meticulous attention to detail throughout.
-            Every corner of this residence has been thoughtfully designed to create a harmonious blend of indoor and outdoor living.
-          </p>
-          <p>
-            The open-concept living area boasts soaring ceilings and floor-to-ceiling windows that flood the space with natural light.
-            The gourmet kitchen is a chef's dream, equipped with top-of-the-line appliances and a massive center island.
-          </p>
+      <div className="details-split-layout">
+        <div className="details-text-side">
+          <div className="details-text-container">
+            <span className="detail-tag uppercase text-accent">About the Property</span>
+            <h2 className="detail-heading">A Masterpiece of Modern Design</h2>
+            <p>
+              Experience the pinnacle of luxury living in this architectural masterpiece.
+              Featuring panoramic views, state-of-the-art amenities, and meticulous attention to detail throughout.
+            </p>
+            <p>
+              The open-concept living area boasts soaring ceilings and floor-to-ceiling windows that flood the space with natural light.
+              The gourmet kitchen is a chef's dream, equipped with top-of-the-line appliances and a massive center island.
+            </p>
+          </div>
         </div>
+        <div className="details-image-side">
+          <img src={galleryConfig.detailsImage} alt="Interior Detail" />
+        </div>
+      </div>
 
+      <div className="container" style={{ position: 'relative', zIndex: 2, marginTop: '-50px' }}>
         <div className="stats-grid">
           <div className="stat-item">
             <span className="stat-value">5</span>
@@ -43,14 +50,42 @@ const Details = () => {
           background-color: white;
           position: relative;
           z-index: 10;
-          padding: var(--spacing-xl) 0;
+          padding: 0; /* Full bleed, no padding on section */
+          box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+          margin-top: -1px;
         }
 
-        .details-container {
+        .details-split-layout {
           display: grid;
-          grid-template-columns: 1.5fr 1fr;
-          gap: var(--spacing-xl);
+          grid-template-columns: 1fr 1fr;
+          min-height: 80vh; /* Make it substantial */
+        }
+        
+        .details-text-side {
+          display: flex;
           align-items: center;
+          justify-content: flex-end; /* Push content towards center */
+          padding: var(--spacing-xl);
+          background: white;
+        }
+
+        .details-text-container {
+          max-width: 600px;
+          width: 100%;
+          padding-right: var(--spacing-lg); /* Space between text and image center */
+        }
+
+        .details-image-side {
+          position: relative;
+          height: 100%;
+          min-height: 500px;
+        }
+        
+        .details-image-side img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
         }
         
         .detail-tag {
@@ -64,7 +99,7 @@ const Details = () => {
           margin-bottom: var(--spacing-md);
         }
         
-        .details-text p {
+        .details-text-side p {
           color: var(--color-text-light);
           margin-bottom: var(--spacing-sm);
           font-size: 1.1rem;
@@ -72,11 +107,12 @@ const Details = () => {
         
         .stats-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: repeat(4, 1fr);
           gap: var(--spacing-md);
           background: #fff;
           padding: var(--spacing-lg);
           border: 1px solid var(--color-border);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Float effect */
         }
         
         .stat-item {
@@ -102,12 +138,24 @@ const Details = () => {
         }
 
         @media (max-width: 900px) {
-          .details-container {
+          .details-split-layout {
             grid-template-columns: 1fr;
-            gap: var(--spacing-lg);
           }
+          .details-image-side {
+            min-height: 400px;
+            order: -1; /* Image first on mobile? */
+          }
+          .details-text-side {
+            justify-content: center;
+            padding: var(--spacing-lg);
+          }
+           .details-text-container {
+            padding-right: 0;
+            text-align: center;
+           }
           
           .stats-grid {
+             grid-template-columns: 1fr 1fr;
              padding: var(--spacing-md);
           }
         }

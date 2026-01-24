@@ -1,4 +1,4 @@
-import React from 'react';
+import { galleryConfig } from '../galleryData';
 
 const Hero = () => {
   return (
@@ -12,16 +12,18 @@ const Hero = () => {
 
       <style>{`
         .hero {
-          position: relative;
+          position: sticky;
+          top: 0;
           height: 100vh;
           width: 100%;
-          background-image: url('/exterior.png');
+          background-image: url('${galleryConfig.heroImage}');
           background-size: cover;
           background-position: center;
-          background-attachment: fixed;
+          background-attachment: fixed; /* Ensures strong static feel */
           display: flex;
           align-items: center;
           color: white;
+          z-index: 0;
         }
         
         .hero-overlay {
@@ -39,8 +41,13 @@ const Hero = () => {
           z-index: 2;
           width: 100%;
           padding-bottom: var(--spacing-xl);
+          opacity: 1;
+          transition: opacity 0.3s ease;
         }
         
+        /* Optional: Fade content as it scrolls? 
+           For now, keep it simple. */
+
         .hero-subtitle {
           font-size: 0.9rem;
           letter-spacing: 0.2rem;
