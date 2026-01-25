@@ -5,9 +5,10 @@ const Footer = () => {
         <footer className="footer">
             <div className="container">
                 <div className="footer-content">
-                    <h2 className="footer-cta">
-                        Contact Cole Swearingen<br />for more info
-                    </h2>
+                    <div className="footer-cta-container">
+                        <span className="footer-cta-small">For more info contact</span>
+                        <h2 className="footer-cta-large">Cole Swearingen</h2>
+                    </div>
 
                     <div className="footer-contact-info">
                         <a href="tel:9729719586" className="footer-link">972.971.9586</a>
@@ -41,15 +42,30 @@ const Footer = () => {
                     text-align: center;
                 }
 
-                .footer-cta {
+                .footer-cta-container {
+                    margin-bottom: 2rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 0.5rem;
+                }
+
+                .footer-cta-small {
+                    font-size: 0.8rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.2em;
+                    color: #666;
+                }
+
+                .footer-cta-large {
                     font-family: var(--font-heading);
-                    font-size: clamp(1rem, 1.5vw, 1.4rem); /* Smaller, like lifestyle banner */
+                    font-size: clamp(1.2rem, 2vw, 1.6rem);
                     text-transform: uppercase;
                     letter-spacing: 0.1em;
-                    line-height: 1.4;
-                    margin-bottom: 2rem;
-                    font-weight: 400;
                     color: #000;
+                    margin: 0;
+                    line-height: 1.2;
+                    font-weight: 400;
                 }
 
                 .footer-contact-info {

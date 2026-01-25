@@ -1,29 +1,37 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
+import FullGallery from './pages/FullGallery';
 import { galleryConfig } from './galleryData';
 
 function App() {
   const [isOpen, setIsOpen] = useState(true); // Open by default for scroll effect
   const [isInitialized, setIsInitialized] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
   // Small delay to ensure smooth initial render
   useEffect(() => {
     setIsInitialized(true);
   }, []);
 
-  // Manage body scroll based on state
+  // Manage body scroll based on state (Only on Home)
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'auto'; // Re-enable scroll when open
+    if (isHome) {
+      if (isOpen) {
+        document.body.style.overflow = 'auto'; // Re-enable scroll when open
+      } else {
+        document.body.style.overflow = 'hidden'; // Lock scroll initially
+      }
     } else {
-      document.body.style.overflow = 'hidden'; // Lock scroll initially
+      document.body.style.overflow = 'auto'; // Always allow scroll on other pages
     }
 
-    // Cleanup function to ensure scroll acts normally if component unmounts
+    // Cleanup
     return () => {
       document.body.style.overflow = 'auto';
     };
-  }, [isOpen]);
+  }, [isOpen, isHome]);
 
   const handleOpen = () => {
     setIsOpen(true);
@@ -31,27 +39,32 @@ function App() {
 
   return (
     <div className={`app-wrapper ${isOpen ? 'is-open' : 'is-closed'}`}>
-      {/* Welcome Screen Overlay */}
-      <div className={`welcome-screen ${isOpen ? 'fade-out' : ''}`}>
-        <div className="welcome-bg"></div>
-        <div className="welcome-content">
-          <h2 className="welcome-address">1234 Lobello Drive</h2>
-          <button className="welcome-btn" onClick={handleOpen}>
-            CLICK TO OPEN
-          </button>
-        </div>
-      </div>
 
-      {/* Main Page Content */}
-      <div className={`main-content ${isOpen ? 'fade-in' : ''}`}>
-        <Home />
+      {/* Welcome Screen Overlay - ONLY ON HOME */}
+      {isHome && (
+        <div className={`welcome-screen ${isOpen ? 'fade-out' : ''}`}>
+          <div className="welcome-bg"></div>
+          <div className="welcome-content">
+            <h2 className="welcome-address">1234 Lobello Drive</h2>
+            <button className="welcome-btn" onClick={handleOpen}>
+              CLICK TO OPEN
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Routes */}
+      <div className={`main-content ${isHome && !isOpen ? 'hidden' : 'visible'}`}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/gallery" element={<FullGallery />} />
+        </Routes>
       </div>
 
       <style>{`
         .app-wrapper {
           position: relative;
           min-height: 100vh;
-          /* overflow-x removed to ensure sticky works */
         }
 
         /* Welcome Screen Styling */
@@ -67,7 +80,7 @@ function App() {
           justify-content: center;
           transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.5s;
           pointer-events: all;
-          background-color: #000; /* Fallback */
+          background-color: #000;
         }
 
         .welcome-screen.fade-out {
@@ -85,8 +98,8 @@ function App() {
           background-image: url('${galleryConfig.heroImage}');
           background-size: cover;
           background-position: center;
-          filter: blur(15px); /* Strong blur initially */
-          transform: scale(1.1); /* Slightly larger to avoid blurred edges */
+          filter: blur(15px);
+          transform: scale(1.1);
           transition: filter 1.5s ease;
         }
 
@@ -127,18 +140,19 @@ function App() {
           border-color: white;
         }
 
-        /* Main Content Reveal Transition */
+        /* Content Visibility */
         .main-content {
-          opacity: 0;
-          transition: opacity 2s ease;
+            transition: opacity 1s ease;
+        }
+        .main-content.hidden {
+            opacity: 0; 
+            height: 100vh; 
+            overflow: hidden;
+        }
+        .main-content.visible {
+            opacity: 1;
         }
 
-        .is-open .main-content {
-          opacity: 1;
-        }
-
-        /* Prevent scroll before opening */
-        /* Scroll handling moved to JS useEffect */
       `}</style>
     </div>
   );

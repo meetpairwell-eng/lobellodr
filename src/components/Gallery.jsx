@@ -1,38 +1,56 @@
-import React from 'react';
-
+import React, { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { galleryConfig } from '../galleryData';
 
-// Determine which images to show based on config
-let images = [];
+// Determine which images to show based on config (Static Source)
+let sourceImages = [];
 
 if (galleryConfig.useBulk) {
   const { baseUrl, filePrefix, extension, count, excludeIndices = [] } = galleryConfig.bulkSettings;
-  // Handle trailing slash just in case user forgets/adds it
   const cleanBase = baseUrl.replace(/\/$/, '');
 
-  images = Array.from({ length: count }, (_, i) => {
+  sourceImages = Array.from({ length: count }, (_, i) => {
     const index = i + 1;
     if (excludeIndices.includes(index)) return null;
     return `${cleanBase}/${filePrefix}${index}${extension}`;
-  }).filter(Boolean); // Remove nulls
+  }).filter(Boolean);
 } else {
-  images = galleryConfig.manualImages;
+  sourceImages = galleryConfig.manualImages;
 }
 
-const Gallery = () => {
+const Gallery = ({ limit = null, randomize = false }) => {
   const [lightboxIndex, setLightboxIndex] = React.useState(null);
+
+  // Prepare images for display
+  const displayImages = useMemo(() => {
+    let result = [...sourceImages];
+
+    if (randomize) {
+      // Fisher-Yates Shuffle
+      for (let i = result.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [result[i], result[j]] = [result[j], result[i]];
+      }
+    }
+
+    if (limit && limit > 0) {
+      result = result.slice(0, limit);
+    }
+
+    return result;
+  }, [limit, randomize]);
 
   const openLightbox = (index) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
 
   const nextImage = (e) => {
     e?.stopPropagation();
-    setLightboxIndex((prev) => (prev + 1) % images.length);
+    setLightboxIndex((prev) => (prev + 1) % displayImages.length);
   };
 
   const prevImage = (e) => {
     e?.stopPropagation();
-    setLightboxIndex((prev) => (prev - 1 + images.length) % images.length);
+    setLightboxIndex((prev) => (prev - 1 + displayImages.length) % displayImages.length);
   };
 
   // Keyboard navigation
@@ -52,18 +70,18 @@ const Gallery = () => {
       <div className="container">
 
         <div className="gallery-grid">
-          {images.map((img, index) => {
-            // Create a varied pattern
+          {displayImages.map((img, index) => {
             let className = 'gallery-item';
 
-            // Logic: Make big items, but ensure the very last item is NOT big/tall/wide
-            // to avoid awkward gaps at the end of the grid.
-            const isLast = index === images.length - 1;
+            // Layout logic: Apply masonry classes (Tetris style).
+            // optimize for straight bottom line: Ensure the last 4 items are always standard (1x1)
+            // so they can fill any gaps left by the dense grid flow.
+            const isFiller = index >= displayImages.length - 4;
 
-            if (!isLast) {
-              if (index % 12 === 0) className += ' big';       // 1 major highlight every 12
-              else if (index % 5 === 0) className += ' tall';  // Some vertical interest
-              else if (index % 3 === 0) className += ' wide';  // Scattered wide shots
+            if (!isFiller) {
+              if (index % 12 === 0) className += ' big';
+              else if (index % 5 === 0) className += ' tall';
+              else if (index % 3 === 0) className += ' wide';
             }
 
             return (
@@ -72,32 +90,40 @@ const Gallery = () => {
                 className={className}
                 onClick={() => openLightbox(index)}
               >
-                <img src={img} alt={`Property view ${index + 1}`} loading="lazy" />
+                <img src={img} alt={`Property view`} loading="lazy" />
                 <div className="hover-overlay"><span className="plus-icon">+</span></div>
               </div>
             );
           })}
         </div>
+
+        {/* View All Button */}
+        {limit && (
+          <div className="view-all-container">
+            <Link to="/gallery" className="view-all-btn">
+              View All Photos
+            </Link>
+          </div>
+        )}
       </div>
 
       {/* Lightbox Overlay */}
       {lightboxIndex !== null && (
         <div className="lightbox-overlay" onClick={closeLightbox}>
           <button className="lb-close" onClick={closeLightbox}>&times;</button>
-
           <button className="lb-nav lb-prev" onClick={prevImage}>&#10094;</button>
 
           <div className="lb-content" onClick={(e) => e.stopPropagation()}>
             <img
-              src={images[lightboxIndex]}
-              alt={`Full screen view ${lightboxIndex + 1}`}
+              src={displayImages[lightboxIndex]}
+              alt={`Full screen view`}
             />
           </div>
 
           <button className="lb-nav lb-next" onClick={nextImage}>&#10095;</button>
 
           <div className="lb-counter">
-            {lightboxIndex + 1} / {images.length}
+            {lightboxIndex + 1} / {displayImages.length}
           </div>
         </div>
       )}
@@ -255,6 +281,32 @@ const Gallery = () => {
           .lb-nav { padding: 0.5rem; font-size: 1.5rem; }
           .lb-prev { left: 10px; }
           .lb-next { right: 10px; }
+        }
+
+        /* View All Button */
+        .view-all-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        
+        .view-all-btn {
+            display: inline-block;
+            text-decoration: none;
+            color: #111;
+            border: 1px solid #111;
+            padding: 1rem 3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .view-all-btn:hover {
+            background: #111;
+            color: white;
+            letter-spacing: 0.25em;
         }
       `}</style>
     </section>

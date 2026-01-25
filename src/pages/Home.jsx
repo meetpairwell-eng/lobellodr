@@ -6,11 +6,13 @@ import StaticSection from '../components/StaticSection';
 import FadeIn from '../components/FadeIn';
 import FloorPlans from '../components/FloorPlans';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 import { galleryConfig } from '../galleryData';
 
 const Home = () => {
     return (
         <main>
+            <SEO />
             <Hero />
             <FullScreenImage image={galleryConfig.lifestyleImage} sticky={true}>
                 <div className="fs-text-banner">
@@ -148,7 +150,7 @@ const Home = () => {
                 `}</style>
             </FullScreenImage>
             <Details />
-            <Gallery />
+            <Gallery limit={20} randomize={true} />
             <FloorPlans />
             <Footer />
         </main>
