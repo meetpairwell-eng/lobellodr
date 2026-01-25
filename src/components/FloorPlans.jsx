@@ -112,25 +112,23 @@ const FloorPlans = () => {
         
         .fp-view-btn {
             pointer-events: auto;
-            background: #ffffff;
-            border: none;
-            color: black;
-            padding: 1rem 2.5rem;
-            font-family: var(--font-heading);
-            font-size: 1.1rem;
-            font-weight: 600;
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            border: 1px solid #fff;
+            background: transparent;
+            padding: 1rem 3rem;
             text-transform: uppercase;
-            letter-spacing: 0.2rem;
-            cursor: pointer;
+            letter-spacing: 0.2em;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
-            border-radius: 4px; /* Slightly refined shape */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
         }
         
         .fp-view-btn:hover {
-            background: white;
-            color: black;
-            transform: translateY(-2px);
+            background: #fff;
+            color: #000;
+            letter-spacing: 0.25em;
         }
 
         /* The Reveal Floor Plan Image */
