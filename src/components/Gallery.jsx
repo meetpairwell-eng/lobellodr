@@ -133,7 +133,7 @@ const Gallery = ({ limit = null, randomize = false }) => {
           background-color: white;
           position: relative;
           z-index: 10;
-          padding: var(--spacing-md) 0 var(--spacing-xl) 0;
+          padding: var(--spacing-md) 0 2rem 0; /* Reduced bottom padding */
         }
 
         .text-center {

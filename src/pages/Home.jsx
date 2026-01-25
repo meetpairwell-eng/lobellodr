@@ -75,13 +75,14 @@ const Home = () => {
                         text-align: left;
                     }
                     .fs-main-title {
-                        font-size: clamp(1rem, 1.5vw, 1.4rem); /* Smaller single-line title */
+                        font-size: clamp(0.9rem, 1.4vw, 1.3rem); /* Smaller to force single line */
                         font-family: var(--font-heading);
                         margin: 0 0 0.5rem 0;
-                        letter-spacing: 0.1rem;
+                        letter-spacing: 0.05rem; /* Reduced tracking */
                         text-transform: uppercase;
                         line-height: 1.1;
                         color: #000;
+                        white-space: nowrap; /* Force single line */
                     }
                     .fs-stats-list {
                         font-size: clamp(0.75rem, 1.2vw, 0.95rem);
