@@ -1,5 +1,6 @@
 import * as lobello from './properties/lobello';
 import * as template from './properties/template';
+import * as norfolk1260 from './properties/norfolk1260';
 
 // Add new properties here as you create them:
 // import * as oaklawn from './properties/oaklawn';
@@ -7,7 +8,7 @@ import * as template from './properties/template';
 const properties = {
     'lobello': lobello,
     'template': template,
-    // 'oaklawn': oaklawn,
+    'norfolk1260': norfolk1260,
 };
 
 // VITE_PROPERTY_ID is set in your Dokploy Environment Variables

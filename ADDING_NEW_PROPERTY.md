@@ -6,10 +6,24 @@ Follow these steps to create and deploy a new property website using this templa
 
 ## Step 1: Create the Property Data ("The Brain")
 
+**Option A: Manual Creation (Right-Click)**
 1.  Navigate to `src/config/properties/`.
-2.  Duplicate the `template.js` file.
+2.  Duplicate `template.js` (for a fresh start) or `lobello.js` (to clone the Lobello look).
 3.  Rename the new file to a unique ID (e.g., `oaklawn.js` or `preston-road.js`).
-4.  Open the file and update:
+
+**Option B: Terminal Command (Fastest)**
+Run this command in your terminal (replace `new-house` with your property name):
+```bash
+# To clone Lobello:
+cp src/config/properties/lobello.js src/config/properties/new-house.js
+
+# To clone the Template:
+cp src/config/properties/template.js src/config/properties/new-house.js
+```
+
+**Step 1.1: Update the Data**
+1.  Open your new file.
+2.  Update:
     *   **propertyInfo:** Address, price, specs, and SEO description.
     *   **agentInfo:** Name and contact details.
     *   **images:** Update the `R2_BASE_URL` and `FOLDER_NAME` to point to your Cloudflare R2 bucket.
