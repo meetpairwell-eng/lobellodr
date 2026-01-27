@@ -21,7 +21,8 @@ const Footer = () => {
                     <div className="footer-bottom">
                         <p className="copyright">&copy; {new Date().getFullYear()} Lobello Drive. All Rights Reserved.</p>
                         <a href="https://pairwell.io" target="_blank" rel="noopener noreferrer" className="powered-by">
-                            Powered by Pairwell
+                            <img src="/pairwell-logo.svg" alt="Pairwell Logo" className="pairwell-footer-logo" />
+                            <span>Powered by Pairwell</span>
                         </a>
                     </div>
                 </div>
@@ -120,17 +121,27 @@ const Footer = () => {
                 }
 
                 .powered-by {
-                    color: #888;
+                    color: #000;
                     text-decoration: none;
                     text-transform: uppercase;
-                    letter-spacing: 0.2em;
-                    font-size: 0.65rem;
-                    transition: color 0.3s;
-                    margin-top: 1rem;
+                    letter-spacing: 0.25em;
+                    font-size: 0.85rem;
+                    transition: opacity 0.3s;
+                    margin-top: 1.5rem;
+                    display: flex;
+                    align-items: center;
+                    gap: 1.2rem;
+                    font-weight: 500;
                 }
                 
+                .pairwell-footer-logo {
+                    width: 32px;
+                    height: 32px;
+                    color: #000; /* For SVG currentColor */
+                }
+
                 .powered-by:hover {
-                    color: #000;
+                    opacity: 0.7;
                 }
 
                 @media (min-width: 768px) {
