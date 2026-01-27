@@ -6,6 +6,20 @@
  */
 
 // ============================================
+// BASE CONFIGURATION
+// ============================================
+
+// R2 Storage Configuration
+const R2_BASE_URL = "https://pub-0a14d2bf83cc482ab589da588a45c6b0.r2.dev";
+const FOLDER_NAME = "1260Norfolk";
+
+// Helper function to build full image URLs
+const getUrl = (filename) => `${R2_BASE_URL}/${FOLDER_NAME}/${filename}`;
+
+// Helper for global assets (headshots, logos) not in the property folder
+const getGlobalUrl = (path) => `${R2_BASE_URL}/${path}`;
+
+// ============================================
 // PROPERTY INFORMATION
 // ============================================
 
@@ -52,10 +66,10 @@ export const agentInfo = {
     phone: "972.971.9586",
     email: "cole.swearingen@compass.com",
     brokerage: "COMPASS",
-    brokerageLogo: "https://pub-0a14d2bf83cc482ab589da588a45c6b0.r2.dev/compass-logo.webp.png",
+    brokerageLogo: getGlobalUrl("main-page/compass-logo.webp.png"),
     officePhone: "(214) 814-8100",
     address: "5960 Berkshire Ln Ste 700, Dallas TX 75225",
-    headshot: "https://pub-0a14d2bf83cc482ab589da588a45c6b0.r2.dev/cole-swearingen-headshot.webp",
+    headshot: getGlobalUrl("cole-swearingen-headshot.webp"),
     socialMedia: {
         facebook: "https://www.facebook.com/cole.swearingen.35/",
         instagram: "https://www.instagram.com/coleswear/?hl=en"
@@ -65,13 +79,6 @@ export const agentInfo = {
 // ============================================
 // IMAGE CONFIGURATION
 // ============================================
-
-// R2 Storage Configuration
-const R2_BASE_URL = "https://pub-0a14d2bf83cc482ab589da588a45c6b0.r2.dev";
-const FOLDER_NAME = "1260Norfolk";
-
-// Helper function to build full image URLs
-const getUrl = (filename) => `${R2_BASE_URL}/${FOLDER_NAME}/${filename}`;
 
 // Layout Configuration
 export const layout = {
@@ -86,7 +93,7 @@ export const images = {
     hero: getUrl("1260Norfolk-10.webp"),        // Revealed image (after scroll)
 
     // Lifestyle/Hallway Section
-    lifestyle: getUrl("1260Norfolk-11.webp"),
+    lifestyle: getUrl("1260Norfolk-3.webp"),
 
     // Detail Section Images (4 panels)
     detailsLiving: getUrl("1260Norfolk-8.webp"),
