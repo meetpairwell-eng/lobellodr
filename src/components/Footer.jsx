@@ -21,8 +21,7 @@ const Footer = () => {
                     <div className="footer-bottom">
                         <p className="copyright">&copy; {new Date().getFullYear()} Lobello Drive. All Rights Reserved.</p>
                         <a href="https://pairwell.io" target="_blank" rel="noopener noreferrer" className="powered-by">
-                            <img src="/pairwell-logo.svg" alt="Pairwell Logo" className="pairwell-footer-logo" />
-                            <span>Powered by Pairwell</span>
+                            Powered by Pairwell
                         </a>
                     </div>
                 </div>
