@@ -28,9 +28,26 @@ cp src/config/properties/template.js src/config/properties/new-house.js
     *   **agentInfo:** Name and contact details.
     *   **images:** Update the `R2_BASE_URL` and `FOLDER_NAME` to point to your Cloudflare R2 bucket.
     *   **detailSections:** Customize the text for the four narrative sections.
-    *   **theme:** Set your colors and fonts (use `lobello.js` for "Light/Classic" or `test-listing.js` for "Dark/Modern").
+    *   **theme:** Set your colors and fonts.
+    *   **layout:** Use toggles like `showWelcomeScreen: false` to hide specific sections.
 
 ---
+
+## Step 1.2: Custom Styles ("The Sandbox")
+
+If you want to add unique animations, glass effects, or custom spacing just for this address:
+
+1.  Create a new CSS file in `src/styles/properties/`.
+2.  Name it exactly the same as your ID (e.g., `oaklawn.css`).
+3.  Target your property with the scoped class:
+    ```css
+    .property-oaklawn h1 {
+        /* Your custom styles here! */
+        animation: none;
+        color: gold;
+    }
+    ```
+4.  This file will automatically load when you switch to this property and **won't** affect any others.
 
 ## Step 2: Register the Property ("The Switchboard")
 

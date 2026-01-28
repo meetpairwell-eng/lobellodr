@@ -64,19 +64,6 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <hr className="footer-divider" />
-
-                    <nav className="footer-nav">
-                        <Link to="/properties" onClick={scrollToTop}>PROPERTIES</Link>
-                        <span className="nav-separator">|</span>
-                        <Link to="/search" onClick={scrollToTop}>HOME SEARCH</Link>
-                        <span className="nav-separator">|</span>
-                        <Link to="/home-valuation" onClick={scrollToTop}>HOME VALUATION</Link>
-                        <span className="nav-separator">|</span>
-                        <a href="/#testimonials">TESTIMONIALS</a>
-                        <span className="nav-separator">|</span>
-                        <a href="/#contact">CONTACT US</a>
-                    </nav>
 
                     <div className="footer-legal-links">
                         <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-5_0.pdf" target="_blank" rel="noopener noreferrer">Texas Real Estate Commission Consumer Protection Notice</a>

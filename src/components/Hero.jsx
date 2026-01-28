@@ -128,7 +128,7 @@ const Hero = () => {
 
                 /* Typography - REFINED WHITE */
                 .hero-name {
-                    font-family: 'Cormorant Garamond', serif;
+                    font-family: var(--font-heading);
                     font-size: clamp(2rem, 6.4vw, 4.4rem);
                     /* Reduced by 20% */
                     font-weight: 300;
@@ -144,7 +144,7 @@ const Hero = () => {
                 }
 
                 .hero-subtitle {
-                    font-family: 'Montserrat', sans-serif;
+                    font-family: var(--font-body);
                     font-size: clamp(0.75rem, 1.2vw, 0.9rem);
                     letter-spacing: 0.45em;
                     font-weight: 400;
@@ -169,7 +169,7 @@ const Hero = () => {
                     display: inline-block;
                     padding: 0.88rem 2.4rem;
                     /* 20% smaller than 1.1rem 3rem */
-                    font-family: 'Montserrat', sans-serif;
+                    font-family: var(--font-body);
                     font-size: 0.65rem;
                     /* 20% smaller than 0.8rem */
                     font-weight: 500;

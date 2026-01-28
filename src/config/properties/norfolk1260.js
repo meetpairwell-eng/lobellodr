@@ -66,7 +66,7 @@ export const agentInfo = {
     phone: "972.971.9586",
     email: "cole.swearingen@compass.com",
     brokerage: "COMPASS",
-    brokerageLogo: getGlobalUrl("main-page/compass-logo.webp.png"),
+    brokerageLogo: getGlobalUrl("main-page/compass-logo.webp"),
     officePhone: "(214) 814-8100",
     address: "5960 Berkshire Ln Ste 700, Dallas TX 75225",
     socialMedia: {
@@ -84,6 +84,7 @@ export const layout = {
     showFloorPlans: false,
     showGallery: true,
     showDetails: true,
+    showWelcomeScreen: false,
 };
 
 export const images = {
@@ -199,8 +200,8 @@ export const theme = {
         overlay: "rgba(0, 0, 0, 0.4)"
     },
     fonts: {
-        heading: "'Marcellus', serif",
-        body: "'Outfit', sans-serif"
+        heading: "'Cormorant Garamond', serif",
+        body: "'Montserrat', sans-serif"
     },
     ui: {
         borderRadius: "0px",

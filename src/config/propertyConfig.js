@@ -18,3 +18,4 @@ const activeId = import.meta.env.VITE_PROPERTY_ID || 'lobello';
 const config = properties[activeId] || properties['lobello'];
 
 export const { propertyInfo, agentInfo, images, galleryConfig, detailSections, theme, layout, galleryConfig_LEGACY } = config;
+export { activeId };

@@ -2,13 +2,29 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import FullGallery from './pages/FullGallery';
-import { propertyInfo, theme, galleryConfig_LEGACY as galleryConfig } from './config/propertyConfig';
+import { propertyInfo, theme, layout, activeId, galleryConfig_LEGACY as galleryConfig } from './config/propertyConfig';
 
 function App() {
-  const [isOpen, setIsOpen] = useState(true); // Open by default for scroll effect
+  const [isOpen, setIsOpen] = useState(layout?.showWelcomeScreen === false); // If welcome screen is off, set to open immediately
   const [isInitialized, setIsInitialized] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === '/';
+
+  // Dynamic Style Loader
+  useEffect(() => {
+    if (activeId) {
+      // Use Vite's dynamic import to load CSS if it exists
+      // We wrap it in a try-catch to silently fail if no custom CSS exists
+      const loadCustomStyles = async () => {
+        try {
+          await import(`./styles/properties/${activeId}.css`);
+        } catch (e) {
+          // No custom styles for this property, which is fine
+        }
+      };
+      loadCustomStyles();
+    }
+  }, [activeId]);
 
   // Apply Theme Overrides
   useEffect(() => {
@@ -68,10 +84,10 @@ function App() {
   };
 
   return (
-    <div className={`app-wrapper ${isOpen ? 'is-open' : 'is-closed'}`}>
+    <div className={`app-wrapper property-${activeId} ${isOpen ? 'is-open' : 'is-closed'}`}>
 
-      {/* Welcome Screen Overlay - ONLY ON HOME */}
-      {isHome && (
+      {/* Welcome Screen Overlay - ONLY ON HOME AND IF ENABLED */}
+      {isHome && layout?.showWelcomeScreen !== false && (
         <div className={`welcome-screen ${isOpen ? 'fade-out' : ''}`}>
           <div className="welcome-bg"></div>
           <div className="welcome-content">

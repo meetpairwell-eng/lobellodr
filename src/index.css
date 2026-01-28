@@ -1,29 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@200;300;400;500&family=Montserrat:wght@300;400;500&family=Cormorant+Garamond:wght@300;400&display=swap');
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Marcellus&family=Outfit:wght@200;300;400;500&display=swap');
 
 :root {
   /* Colors */
+  --color-primary: #1a1a1a;
+  --color-primary-light: #444444;
+  --color-primary-dark: #000000;
+  --color-accent: #1a1a1a;
+  --color-gold: #C9A961;
+
   --color-bg: #FCFCFC;
-  /* Off-white background */
+  --color-bg-secondary: #EBE6DF;
+  --color-bg-dark: #1A1A1A;
   --color-text: #1A1A1A;
-  /* Near black text */
   --color-text-light: #666666;
-  --color-accent: #C7A17A;
-  /* Muted Gold */
+  --color-text-inverse: #FFFFFF;
   --color-border: #E5E5E5;
-  --color-overlay: rgba(0, 0, 0, 0.4);
 
-  /* Typography */
-  --font-heading: 'Marcellus', serif;
-  --font-body: 'Outfit', sans-serif;
-
-  /* Spacing */
+  /* Default Spacing */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
   --spacing-lg: 4rem;
   --spacing-xl: 8rem;
 
-  /* UI Elements */
+  /* Typography Defaults (Lobello) */
+  --font-heading: 'Marcellus', serif;
+  --font-body: 'Outfit', sans-serif;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+
+  /* UI defaults */
   --radius-md: 0px;
   --btn-padding: 1rem 2.5rem;
   --ls-widest: 0.3em;
@@ -31,16 +47,18 @@
   --hero-text-top: 35%;
 }
 
-*,
-*::before,
-*::after {
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-html,
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  margin: 0;
-  padding: 0;
   font-family: var(--font-body);
   color: var(--color-text);
   background-color: var(--color-bg);
@@ -57,16 +75,12 @@ h5,
 h6 {
   font-family: var(--font-heading);
   font-weight: 400;
-  /* Regular weight for Marcellus */
   margin: 0 0 var(--spacing-sm) 0;
   line-height: 1.2;
-  letter-spacing: 0.02em;
-  /* Slightly tighter than the all-caps look */
 }
 
 p {
   margin: 0 0 var(--spacing-sm) 0;
-  font-weight: 300;
 }
 
 img {
@@ -80,29 +94,43 @@ a {
   transition: color var(--transition-fast);
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  background: none;
-  font-family: inherit;
-}
-
-/* Utilities */
+/* Utility Classes */
 .container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 var(--spacing-sm);
 }
 
-.section {
-  padding: var(--spacing-xl) 0;
+.text-center {
+  text-align: center;
 }
 
-.text-accent {
-  color: var(--color-accent);
+/* ==========================================================
+   Modular Property Styles (Loaded Dynamically)
+   ========================================================== */
+
+/* Animations & Hide scrollbar - Applied to all if needed, or scoped */
+::-webkit-scrollbar {
+  display: none;
 }
 
-.uppercase {
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
 }
