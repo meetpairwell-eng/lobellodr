@@ -132,8 +132,8 @@ const Footer = () => {
                     padding-right: 50px;
                     display: flex;
                     flex-direction: column;
-                    align-items: center;
-                    text-align: center;
+                    align-items: flex-start;
+                    text-align: left;
                 }
 
 
