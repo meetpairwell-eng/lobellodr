@@ -1,0 +1,317 @@
+.footer {
+    background: #fff;
+    color: #333;
+    padding: 40px 0 30px;
+    font-family: var(--font-body);
+}
+
+.footer-top {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-compass-logo {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.compass-link {
+    text-decoration: none;
+    display: inline-block;
+    transition: opacity 0.3s ease;
+}
+
+.compass-link:hover {
+    opacity: 0.7;
+}
+
+.footer-compass-logo h1 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    letter-spacing: 0.5em;
+    font-weight: 300;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.broker-logo-img {
+    height: 30px;
+    width: auto;
+}
+
+.footer-main-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+    margin-bottom: 40px;
+}
+
+.footer-agent-info {
+    border-right: 1px solid #e5e5e5;
+    padding-right: 50px;
+}
+
+.footer-agent-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #000;
+    margin-bottom: 5px;
+    letter-spacing: 0.05em;
+}
+
+.agent-title {
+    font-size: 0.85rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0;
+}
+
+.footer-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    align-items: start;
+}
+
+.footer-info-col h4 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #000;
+    margin-bottom: 12px;
+    margin-top: 0;
+    text-transform: uppercase;
+}
+
+.footer-info-link {
+    display: block;
+    color: #666;
+    font-size: 0.95rem;
+    text-decoration: none;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.footer-info-link:hover {
+    color: #000;
+}
+
+.footer-info-text {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.footer-social-icons {
+    display: flex;
+    gap: 12px;
+    margin-top: 0;
+}
+
+.social-icon {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    background: #f5f5f5;
+    color: #000;
+    border-color: #999;
+}
+
+.footer-divider {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid #e5e5e5;
+    margin: 30px 0;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.footer-nav a {
+    color: #333;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: #000;
+}
+
+.nav-separator {
+    color: #e0e0e0;
+    font-size: 0.8rem;
+}
+
+.footer-legal-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 30px;
+}
+
+.footer-legal-links a,
+.legal-modal-trigger {
+    color: #999;
+    text-decoration: underline;
+    font-size: 0.85rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.3s ease;
+}
+
+.footer-legal-links a:hover,
+.legal-modal-trigger:hover {
+    color: #666;
+}
+
+.footer-disclaimer {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    text-align: center;
+}
+
+.footer-disclaimer p {
+    font-size: 0.75rem;
+    line-height: 1.8;
+    color: #999;
+    margin: 0;
+}
+
+.footer-bottom-logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.realtor-logos {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.realtor-logos img {
+    height: 40px;
+    width: auto;
+    filter: grayscale(1) opacity(0.5);
+    transition: all 0.3s ease;
+}
+
+.realtor-logos img:hover {
+    filter: grayscale(0) opacity(1);
+}
+
+.footer-pairwell {
+    text-align: center;
+    padding: 25px 0 0;
+    margin-top: 30px;
+    border-top: 1px solid #e5e5e5;
+    font-size: 0.85rem;
+    color: #999;
+}
+
+.pairwell-text {
+    color: #666;
+    font-weight: 500;
+}
+
+.footer-separator {
+    margin: 0 12px;
+    color: #ddd;
+}
+
+.copyright-text {
+    color: #999;
+}
+
+.privacy-link {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.privacy-link:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 60px 20px 30px;
+    }
+
+    .footer-compass-logo h1 {
+        font-size: 2rem;
+    }
+
+    .footer-main-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-agent-info {
+        border-right: none;
+        border-bottom: 1px solid #e5e5e5;
+        padding-right: 0;
+        padding-bottom: 30px;
+        text-align: center;
+    }
+
+    .footer-info-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-info-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-social-icons {
+        justify-content: center;
+    }
+
+    .footer-nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-separator {
+        display: none;
+    }
+
+    .footer-disclaimer {
+        padding: 0 15px;
+    }
+}
