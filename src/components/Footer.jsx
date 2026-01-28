@@ -129,12 +129,13 @@ const Footer = () => {
 
                 .footer-agent-info {
                     border-right: 1px solid #e5e5e5;
-                    padding-right: 50px;
-                    padding-left: 200px; /* Shifted further to the right */
+                    padding-right: 30px;
+                    padding-left: 50px; /* Reduced shift to give more room */
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
                     text-align: left;
+                    white-space: nowrap; /* Force one line */
                 }
 
 
