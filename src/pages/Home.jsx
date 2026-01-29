@@ -290,16 +290,27 @@ const Home = () => {
                     }
 
                     @media (max-width: 900px) {
-                       .fs-content-layout {
+                        .fs-text-banner {
+                            padding: 1.2rem 0; /* Reduced from 2.5rem */
+                        }
+                        .fs-content-layout {
                             grid-template-columns: 1fr;
-                            gap: 3rem;
+                            gap: 1.2rem; /* Reduced from 3rem */
                             text-align: center;
-                       }
-                       .fs-left-col, .fs-right-col, .fs-agent, .fs-features-list { 
-                           text-align: center; 
-                           align-items: center;
-                       }
-                       .fs-main-title { margin-bottom: 2rem; }
+                        }
+                        .fs-description {
+                            margin-top: 1rem; /* Reduced from 1.5rem/1.8rem */
+                        }
+                        .fs-features-list {
+                            margin-top: 1.5rem !important; /* Reduced from 3rem */
+                            margin-bottom: 0.8rem;
+                        }
+                        .fs-left-col, .fs-right-col, .fs-agent, .fs-features-list { 
+                            text-align: center; 
+                            align-items: center;
+                        }
+                        .fs-main-title { margin-bottom: 1.5rem; }
+                        .fs-agent-title { margin-bottom: 0.5rem; }
                     }
                 `}</style>
             </FullScreenImage>
