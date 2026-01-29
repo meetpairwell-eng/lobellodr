@@ -85,29 +85,31 @@ const Hero = () => {
                     z-index: 0;
                 }
 
-                /* Dark Overlay for Text Readability - REMOVED but kept for structure */
+                /* Dark Overlay for Text Readability - REFINED */
                 .hero-overlay {
                     position: absolute;
                     top: 0;
                     left: 0;
                     right: 0;
                     bottom: 0;
-                    background: transparent;
-                    /* Removed black filter */
+                    background: linear-gradient(
+                        to bottom,
+                        rgba(0,0,0,0.1) 0%,
+                        rgba(0,0,0,0.2) 40%,
+                        rgba(0,0,0,0.5) 100%
+                    );
                     z-index: 1 !important;
-                    /* Ensure it stays behind text */
                 }
 
                 /* Container & Content Layout */
                 .hero-container {
                     position: relative;
                     z-index: 10 !important;
-                    /* MOVE ABOVE OVERLAY */
                     width: 100%;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    min-height: 100vh; /* Adjusted from -80px since no navbar is present */
+                    min-height: 100vh;
                 }
 
                 .hero-main-stack {
@@ -119,23 +121,26 @@ const Hero = () => {
                     align-items: center !important;
                     justify-content: center !important;
                     z-index: 11 !important;
-                    /* Double check layering */
+                    padding: 2rem;
+                    /* Subtle glass effect behind text */
+                    backdrop-filter: blur(2px);
+                    -webkit-backdrop-filter: blur(2px);
                 }
 
                 /* Typography - REFINED WHITE */
                 .hero-name {
                     font-family: var(--font-heading);
                     font-size: clamp(2rem, 6.4vw, 4.4rem);
-                    /* Reduced by 20% */
                     font-weight: 300;
-                    /* THIN LUXURY WEIGHT */
                     text-transform: uppercase;
                     letter-spacing: 0.15em;
                     margin-bottom: 0.5rem;
                     line-height: 1.1;
                     color: #ffffff !important;
-                    /* ABSOLUTE WHITE */
-                    text-shadow: none !important;
+                    /* Layered shadow for professional depth */
+                    text-shadow: 
+                        0 2px 10px rgba(0,0,0,0.3),
+                        0 10px 20px rgba(0,0,0,0.2);
                     z-index: 12 !important;
                 }
 
