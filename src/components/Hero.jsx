@@ -386,6 +386,7 @@ const Hero = () => {
                 <div className="hero-main-stack">
                     <FadeIn direction="up" distance="40px" duration={1.2}>
                         <h1 className="hero-name">{propertyInfo.address}</h1>
+                        <div className="hero-name-divider"></div>
                     </FadeIn>
                 </div>
 
@@ -480,15 +481,15 @@ const Hero = () => {
                     display: flex;
                     flex-direction: column;
                     justify-content: flex-start;
-                    align-items: flex-start;
-                    padding-top: 12vh;
-                    padding-left: 15vw;
+                    align-items: center; /* Center horizontally */
+                    padding-top: 15vh;
+                    padding-left: 0; /* Remove left padding */
                 }
 
                 .hero-main-stack {
-                    text-align: left;
-                    width: auto;
-                    padding: 0;
+                    text-align: center; /* Center text */
+                    width: 100%;
+                    padding: 0 2rem;
                     margin-bottom: 0;
                 }
 
@@ -505,6 +506,14 @@ const Hero = () => {
                     text-shadow: 0 4px 20px rgba(0,0,0,0.15);
                     margin-right: 0.02em;
                     white-space: nowrap;
+                }
+
+                .hero-name-divider {
+                    width: 100px;
+                    height: 1px;
+                    background: #ffffff;
+                    margin: 2rem auto 0;
+                    opacity: 0.7;
                 }
 
                 /* Floating HUD Bar */
