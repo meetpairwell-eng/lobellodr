@@ -357,7 +357,7 @@ const Home = () => {
                         .fs-agent-title { margin-bottom: 0.5rem; }
                     }
 
-                    .gallery-intro {
+                    .section-intro {
                         display: flex;
                         flex-direction: column;
                         align-items: center;
@@ -390,7 +390,7 @@ const Home = () => {
 
             {showGallery && (
                 <>
-                    <div className="gallery-intro">
+                    <div className="section-intro">
                         <div className="intro-line"></div>
                         <span className="intro-text">GALLERY</span>
                     </div>
@@ -398,6 +398,10 @@ const Home = () => {
                 </>
             )}
             {showFloorPlans && <FloorPlans />}
+            <div className="section-intro">
+                <div className="intro-line"></div>
+                <span className="intro-text">LOCATION</span>
+            </div>
             <Map />
             <Footer />
         </main>
