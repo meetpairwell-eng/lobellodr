@@ -237,7 +237,8 @@ const Home = () => {
                     /* Property Information & Features Styles */
                     .fs-features-list {
                         text-align: right;
-                        margin-bottom: 0.5rem; /* Reduced margin */
+                        margin-top: 3rem; /* Push down to align with description text */
+                        margin-bottom: 0.5rem;
                     }
                     .feature-line {
                         font-family: var(--font-body);
@@ -258,7 +259,7 @@ const Home = () => {
                     .fs-agent-title {
                         font-size: 0.75rem; /* Smaller label */
                         letter-spacing: 0.2em;
-                        margin-bottom: 1rem;
+                        margin-bottom: 0.2rem; /* Reduced to move closer to name */
                         color: var(--color-text); /* Darkened text */
                     }
                     .fs-agent-name {
