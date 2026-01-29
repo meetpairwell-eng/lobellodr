@@ -85,27 +85,14 @@ const Home = () => {
                                 <div className="fs-right-col">
                                     {/* Property Specs */}
                                     <div className="fs-property-specs">
-                                        <div className="spec-sqft">{propertyInfo.specs.sqft} SQ FT | {propertyInfo.specs.lotSize} Lot</div>
                                         <div className="spec-rooms">
-                                            <span className="spec-item">
-                                                <svg className="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                                                    <polyline points="9 22 9 12 15 12 15 22" />
-                                                </svg>
-                                                {propertyInfo.specs.beds} Beds
-                                            </span>
+                                            <span className="spec-item">{propertyInfo.specs.beds} Beds</span>
                                             <span className="spec-divider">|</span>
-                                            <span className="spec-item">
-                                                <svg className="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                                    <path d="M9 6L9 3M15 6L15 3M4 10h16M4 10v9a2 2 0 002 2h12a2 2 0 002-2v-9M4 10V7a2 2 0 012-2h12a2 2 0 012 2v3" />
-                                                    <rect x="7" y="14" width="3" height="3" rx="0.5" />
-                                                    <rect x="14" y="14" width="3" height="3" rx="0.5" />
-                                                </svg>
-                                                {propertyInfo.specs.baths} Baths
-                                            </span>
+                                            <span className="spec-item">{propertyInfo.specs.baths} Baths</span>
                                             <span className="spec-divider">|</span>
                                             <span className="spec-item">{propertyInfo.specs.powder} Powder</span>
                                         </div>
+                                        <div className="spec-sqft">{propertyInfo.specs.sqft} SQ FT | {propertyInfo.specs.lotSize} Lot</div>
                                     </div>
 
                                     {/* Property Features */}
@@ -195,7 +182,7 @@ const Home = () => {
                         align-items: center; 
                         gap: 2rem; /* Closer together */
                         width: 100%;
-                        max-width: 900px; /* Not so at the edge */
+                        max-width: 1150px; /* Widened to move margins out */
                         margin: 0 auto;
                         color: var(--color-text);
                         padding: 0 1rem;
@@ -258,8 +245,8 @@ const Home = () => {
                         font-size: clamp(0.75rem, 1.2vw, 0.95rem);
                         letter-spacing: 0.1rem;
                         font-weight: 300;
-                        color: var(--color-text-light);
-                        margin-bottom: 0.5rem;
+                        color: var(--color-text); /* Darkened text */
+                        margin-top: 0.5rem;
                         text-transform: uppercase;
                     }
                     .spec-rooms {
@@ -270,7 +257,7 @@ const Home = () => {
                         font-size: clamp(0.75rem, 1.2vw, 0.95rem);
                         letter-spacing: 0.1rem;
                         font-weight: 300;
-                        color: var(--color-text-light);
+                        color: var(--color-text); /* Darkened text */
                         text-transform: uppercase;
                     }
                     .spec-item {
@@ -297,7 +284,7 @@ const Home = () => {
                         font-size: clamp(0.75rem, 1.2vw, 0.95rem);
                         letter-spacing: 0.1rem;
                         font-weight: 300;
-                        color: var(--color-text-light);
+                        color: var(--color-text); /* Darkened text */
                         text-transform: uppercase;
                         line-height: 1.6;
                     }
@@ -312,7 +299,7 @@ const Home = () => {
                         font-size: 0.75rem; /* Smaller label */
                         letter-spacing: 0.2em;
                         margin-bottom: 1rem;
-                        color: var(--color-text-light);
+                        color: var(--color-text); /* Darkened text */
                     }
                     .fs-agent-name {
                         font-size: clamp(1.4rem, 2vw, 1.8rem); /* Smaller name */
