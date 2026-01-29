@@ -385,10 +385,7 @@ const Hero = () => {
             <div className="hero-container">
                 <div className="hero-main-stack">
                     <FadeIn direction="up" distance="40px" duration={1.2}>
-                        <h1 className="hero-name">
-                            {propertyInfo.address.split(' ')[0]}<br />
-                            {propertyInfo.address.split(' ').slice(1).join(' ')}
-                        </h1>
+                        <h1 className="hero-name">{propertyInfo.address}</h1>
                     </FadeIn>
                 </div>
 
@@ -498,7 +495,7 @@ const Hero = () => {
                 /* Typography - DRAMATIC MARCELLUS */
                 .hero-name {
                     font-family: 'Marcellus', serif;
-                    font-size: clamp(2.5rem, 8vw, 6.5rem);
+                    font-size: clamp(2rem, 6vw, 5.5rem);
                     font-weight: 300;
                     text-transform: uppercase;
                     letter-spacing: -0.02em;
@@ -507,7 +504,7 @@ const Hero = () => {
                     color: #ffffff;
                     text-shadow: 0 4px 20px rgba(0,0,0,0.15);
                     margin-right: 0.02em;
-                    white-space: normal;
+                    white-space: nowrap;
                 }
 
                 /* Floating HUD Bar */
