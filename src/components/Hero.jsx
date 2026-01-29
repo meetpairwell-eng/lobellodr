@@ -49,23 +49,21 @@ const Hero = () => {
                         <FadeIn direction="up" distance="20px" delay={800} duration={1}>
                             <div className="framed-hud-tech">
                                 <div className="tech-hud-main">
-                                    <div className="tech-info-cluster">
-                                        <div className="tech-price-large">{propertyInfo.price}</div>
-                                        <div className="tech-specs-row">
-                                            <div className="tech-spec-item">
-                                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8M4 10V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5M12 4v6M2 18h20" /></svg>
-                                                <span>{propertyInfo.specs.beds} BEDS</span>
-                                            </div>
-                                            <div className="tech-spec-dot"></div>
-                                            <div className="tech-spec-item">
-                                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM7 8h10M7 12h10M7 16h10" /></svg>
-                                                <span>{propertyInfo.specs.baths} BATHS</span>
-                                            </div>
-                                            <div className="tech-spec-dot"></div>
-                                            <div className="tech-spec-item">
-                                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><path d="M9 3v18M15 3v18M3 9h18M3 15h18" /></svg>
-                                                <span>{propertyInfo.specs.sqft.toLocaleString()} SQ FT</span>
-                                            </div>
+                                    <div className="tech-price-large">{propertyInfo.price}</div>
+                                    <div className="tech-specs-row">
+                                        <div className="tech-spec-item">
+                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8M4 10V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5M12 4v6M2 18h20" /></svg>
+                                            <span>{propertyInfo.specs.beds} BEDS</span>
+                                        </div>
+                                        <div className="tech-spec-dot"></div>
+                                        <div className="tech-spec-item">
+                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM7 8h10M7 12h10M7 16h10" /></svg>
+                                            <span>{propertyInfo.specs.baths} BATHS</span>
+                                        </div>
+                                        <div className="tech-spec-dot"></div>
+                                        <div className="tech-spec-item">
+                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><path d="M9 3v18M15 3v18M3 9h18M3 15h18" /></svg>
+                                            <span>{propertyInfo.specs.sqft.toLocaleString()} SQ FT</span>
                                         </div>
                                     </div>
                                     <button className="ghost-photos-btn" onClick={scrollToGallery}>
@@ -204,17 +202,10 @@ const Hero = () => {
                     }
 
                     .tech-hud-main {
-                        display: flex;
-                        flex-direction: column;
+                        display: grid;
+                        grid-template-columns: 1fr auto;
                         gap: 1.5rem;
-                    }
-
-                    .tech-header-row {
-                        display: flex;
-                        justify-content: space-between;
                         align-items: center;
-                        width: 100%;
-                        gap: 2rem;
                     }
 
                     .tech-price-large {
@@ -224,6 +215,7 @@ const Hero = () => {
                         letter-spacing: 0.15em;
                         line-height: 1;
                         text-transform: uppercase;
+                        grid-column: 1;
                     }
 
                     .ghost-photos-btn {
@@ -238,6 +230,7 @@ const Hero = () => {
                         gap: 0.8rem;
                         cursor: pointer;
                         transition: all 0.3s ease;
+                        grid-column: 2;
                     }
 
                     .ghost-photos-btn:hover {
@@ -255,6 +248,7 @@ const Hero = () => {
                         font-size: 0.65rem;
                         letter-spacing: 0.2rem;
                         text-transform: uppercase;
+                        grid-column: 1 / -1;
                     }
 
                     .tech-spec-item {
@@ -337,26 +331,35 @@ const Hero = () => {
                         }
 
                         .tech-hud-main {
-                            flex-direction: row;
-                            justify-content: space-between;
+                            display: grid;
+                            grid-template-columns: 1fr auto;
+                            gap: 0.5rem 4rem;
                             align-items: flex-end;
                             width: 100%;
-                            gap: 4rem;
                         }
 
-                        .tech-info-cluster {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 1rem;
-                            align-items: flex-start;
+                        .tech-price-large { 
+                            font-size: 2.2rem; 
+                            grid-column: 1;
+                            grid-row: 1;
+                            margin: 0;
                         }
-
-                        .tech-price-large { font-size: 2.2rem; margin-bottom: 0.5rem; }
-                        .tech-specs-row { font-size: 0.85rem; gap: 2.5rem; color: rgba(255,255,255,0.8); }
+                        
+                        .tech-specs-row { 
+                            font-size: 0.85rem; 
+                            gap: 2.5rem; 
+                            color: rgba(255,255,255,0.8); 
+                            grid-column: 1;
+                            grid-row: 2;
+                        }
+                        
                         .tech-spec-item svg { width: 18px; height: 18px; }
 
                         .ghost-photos-btn {
-                            align-self: flex-end;
+                            grid-column: 2;
+                            grid-row: 1 / span 2;
+                            padding: 0.8rem 1.5rem;
+                            font-size: 0.7rem;
                         }
                     }
                 `}</style>
