@@ -5,6 +5,13 @@ import FadeIn from './FadeIn';
 const Hero = () => {
     const isBrickellia = activeId === 'brickellia5168';
 
+    const scrollToGallery = () => {
+        const gallery = document.querySelector('.gallery-section');
+        if (gallery) {
+            gallery.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     if (isBrickellia) {
         return (
             <section className="hero-framed">
@@ -30,17 +37,26 @@ const Hero = () => {
 
                 {/* Content Overlay */}
                 <div className="framed-content">
-                    <div className="top-left-address">
+                    <div className="glass-panel main-address-panel">
                         <FadeIn direction="down" distance="30px" duration={1.5}>
                             <div className="tech-tag">RESIDENCE // 5168</div>
                             <h1 className="framed-name">{propertyInfo.address}</h1>
                         </FadeIn>
                     </div>
 
-                    {/* Modern Tech HUD */}
+                    {/* View Gallery Button */}
+                    <div className="view-gallery-action">
+                        <FadeIn direction="up" distance="20px" delay={600}>
+                            <button className="ghost-gallery-btn" onClick={scrollToGallery}>
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><circle cx="8.5" cy="8.5" r="1.5" /><path d="M21 15l-5-5L5 21" /></svg>
+                                <span>VIEW PHOTOS</span>
+                            </button>
+                        </FadeIn>
+                    </div>
+
                     <div className="bottom-right-hud">
                         <FadeIn direction="up" distance="20px" delay={800} duration={1}>
-                            <div className="framed-hud-tech">
+                            <div className="glass-panel framed-hud-tech">
                                 <div className="tech-hud-main">
                                     <div className="tech-price-large">{propertyInfo.price}</div>
                                     <div className="tech-specs-row">
@@ -90,7 +106,7 @@ const Hero = () => {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
-                        opacity: 0.9;
+                        opacity: 0.85;
                     }
 
                     .hero-overlay-subtle {
@@ -98,38 +114,41 @@ const Hero = () => {
                         top: 0;
                         left: 0;
                         width: 100%;
-                        height: 40%;
-                        background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 100%);
+                        height: 100%;
+                        background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 100%);
                     }
 
-                    /* Frame Border Effect */
+                    /* Frame Border & Brackets */
                     .hero-frame-border {
                         position: absolute;
                         top: 2rem;
                         left: 2rem;
                         right: 2rem;
                         bottom: 2rem;
-                        border: 1px solid rgba(255, 255, 255, 0.2);
+                        border: 1px solid rgba(255, 255, 255, 0.15);
                         z-index: 5;
                         pointer-events: none;
                     }
 
-                    .tech-tag {
-                        font-family: var(--font-body);
-                        font-size: 0.65rem;
-                        letter-spacing: 0.4em;
-                        color: rgba(255,255,255,0.6);
-                        margin-bottom: 0.8rem;
-                        display: flex;
-                        align-items: center;
-                        gap: 1rem;
+                    .corner-tl, .corner-tr, .corner-bl, .corner-br {
+                        position: absolute;
+                        width: 30px;
+                        height: 30px;
+                        border: 1px solid rgba(255,255,255,0.4);
+                        z-index: 6;
                     }
+                    .corner-tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+                    .corner-tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+                    .corner-bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+                    .corner-br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
 
-                    .tech-tag::after {
-                        content: "";
-                        width: 40px;
-                        height: 1px;
-                        background: rgba(255,255,255,0.3);
+                    /* Glassmorphism Panels */
+                    .glass-panel {
+                        background: rgba(0, 0, 0, 0.25);
+                        backdrop-filter: blur(15px);
+                        -webkit-backdrop-filter: blur(15px);
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        padding: 2.5rem;
                     }
 
                     .framed-content {
@@ -141,261 +160,208 @@ const Hero = () => {
                         display: flex;
                         flex-direction: column;
                         justify-content: space-between;
+                        align-items: flex-start;
                     }
 
-                    .top-left-address {
-                        text-align: left;
+                    .main-address-panel {
+                        padding: 2rem 3.5rem;
+                    }
+
+                    .tech-tag {
+                        font-family: var(--font-body);
+                        font-size: 0.7rem;
+                        letter-spacing: 0.5em;
+                        color: rgba(255,255,255,0.6);
+                        margin-bottom: 1.2rem;
+                        display: flex;
+                        align-items: center;
+                        gap: 1.5rem;
+                    }
+
+                    .tech-tag::after {
+                        content: "";
+                        width: 50px;
+                        height: 1px;
+                        background: rgba(255,255,255,0.3);
                     }
 
                     .framed-name {
                         font-family: 'Marcellus', serif;
-                        font-size: clamp(2.2rem, 5.5vw, 4.8rem);
+                        font-size: clamp(2.2rem, 5.5vw, 4.5rem);
                         font-weight: 300;
                         text-transform: uppercase;
                         letter-spacing: 0.25em;
                         line-height: 1.1;
                         color: #ffffff;
                         margin: 0;
-                        text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                    }
+
+                    /* View Gallery Button */
+                    .view-gallery-action {
+                        margin-left: 3.5rem;
+                        margin-top: 2rem;
+                    }
+
+                    .ghost-gallery-btn {
+                        background: rgba(255,255,255,0.05);
+                        backdrop-filter: blur(5px);
+                        border: 1px solid rgba(255,255,255,0.2);
+                        color: #fff;
+                        padding: 1.2rem 2.5rem;
+                        font-family: var(--font-body);
+                        font-size: 0.75rem;
+                        letter-spacing: 0.35em;
+                        display: flex;
+                        align-items: center;
+                        gap: 1.2rem;
+                        cursor: pointer;
+                        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+                    }
+
+                    .ghost-gallery-btn:hover {
+                        background: rgba(255,255,255,1);
+                        color: #000;
+                        transform: translateY(-2px);
+                        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
                     }
 
                     .bottom-right-hud {
+                        width: 100%;
                         display: flex;
                         justify-content: flex-end;
-                        align-items: flex-end;
                     }
 
-                    /* Modern Tech HUD Style */
                     .framed-hud-tech {
-                        background: rgba(0,0,0,0.4);
-                        backdrop-filter: blur(10px);
-                        border: 1px solid rgba(255,255,255,0.1);
-                        padding: 2rem;
-                        width: 450px;
+                        padding: 2.5rem 4rem;
+                        min-width: 480px;
+                    }
+
+                    .tech-hud-main {
                         display: flex;
                         flex-direction: column;
                         gap: 1.5rem;
                     }
 
-                    .tech-hud-header {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 0.8rem;
-                    }
-
-                    .tech-hud-title {
-                        font-family: var(--font-body);
-                        font-size: 0.6rem;
-                        letter-spacing: 0.3em;
-                        color: rgba(255,255,255,0.5);
-                    }
-
-                    .tech-line-h {
-                        width: 100%;
-                        height: 1px;
-                        background: linear-gradient(to right, rgba(255,255,255,0.3), transparent);
-                    }
-
-                    .tech-grid {
-                        display: grid;
-                        grid-template-columns: repeat(2, 1fr);
-                        gap: 2rem;
-                    }
-
-                    .tech-item {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 0.4rem;
-                    }
-
-                    .tech-label {
-                        font-size: 0.55rem;
-                        letter-spacing: 0.2em;
-                        color: rgba(255,255,255,0.4);
-                        font-weight: 500;
-                    }
-
-                    .tech-val {
-                        color: #fff;
-                        font-family: var(--font-body);
-                        font-size: 1.1rem;
-                        letter-spacing: 0.1em;
-                        font-weight: 300;
-                    }
-
-                    .tech-val small {
-                        font-size: 0.6rem;
-                        opacity: 0.6;
-                        letter-spacing: 0.1em;
-                    }
-
                     .tech-price-large {
                         font-family: 'Marcellus', serif;
-                        font-size: clamp(2.5rem, 6vw, 4.8rem);
+                        font-size: clamp(2.5rem, 6.5vw, 4.5rem);
                         color: #fff;
                         letter-spacing: 0.15em;
-                        margin-bottom: 0.8rem;
-                        line-height: 1.1;
+                        line-height: 1;
                         text-transform: uppercase;
                     }
 
                     .tech-specs-row {
                         display: flex;
                         align-items: center;
-                        gap: 1.5rem;
+                        gap: 2.5rem;
                         color: rgba(255,255,255,0.7);
                         font-family: var(--font-body);
-                        font-size: 0.8rem;
-                        letter-spacing: 0.2rem;
+                        font-size: 0.9rem;
+                        letter-spacing: 0.25rem;
                         text-transform: uppercase;
                     }
 
                     .tech-spec-item {
                         display: flex;
                         align-items: center;
-                        gap: 0.6rem;
+                        gap: 0.8rem;
                     }
 
                     .tech-spec-item svg {
                         opacity: 0.6;
+                        width: 18px;
+                        height: 18px;
                     }
 
                     .tech-spec-dot {
-                        width: 3px;
-                        height: 3px;
+                        width: 5px;
+                        height: 5px;
                         background: rgba(255,255,255,0.3);
                         border-radius: 50%;
                     }
 
-                    /* Mobile Adjustments - Modern Techy HUD */
+                    /* Mobile Adjustments - High-Tech Minimalist */
                     @media (max-width: 900px) {
-                        .hero-framed {
-                            flex-direction: column;
-                            height: 100vh;
-                            background: #000;
-                        }
-
-                        .hero-media-wrapper {
-                            position: relative;
-                            height: 55vh;
-                            width: 100%;
-                            z-index: 1;
-                        }
-
-                        .hero-media-bg {
-                            opacity: 1;
-                        }
-
-                        /* Target Viewfinder corners on mobile */
                         .hero-frame-border {
-                            top: 1.5rem;
-                            left: 1.5rem;
-                            right: 1.5rem;
-                            height: calc(55vh - 3rem);
-                            border: none;
+                            top: 1rem;
+                            left: 1rem;
+                            right: 1rem;
+                            bottom: 1rem;
                         }
 
                         .corner-tl, .corner-tr, .corner-bl, .corner-br {
-                            position: absolute;
-                            width: 20px;
-                            height: 20px;
-                            border: 1px solid rgba(255,255,255,0.5);
+                            width: 25px;
+                            height: 25px;
                         }
-                        .corner-tl { top: 0; left: 0; border-right: none; border-bottom: none; }
-                        .corner-tr { top: 0; right: 0; border-left: none; border-bottom: none; }
-                        .corner-bl { bottom: 0; left: 0; border-right: none; border-top: none; }
-                        .corner-br { bottom: 0; right: 0; border-left: none; border-top: none; }
 
                         .framed-content {
-                            height: 45vh;
+                            padding: 2rem;
+                            justify-content: center;
+                            gap: 1rem;
+                            align-items: center;
+                            text-align: center;
+                        }
+
+                        .glass-panel {
+                            padding: 2rem 1.5rem;
                             width: 100%;
+                            background: rgba(0, 0, 0, 0.4);
+                        }
+
+                        .main-address-panel {
                             padding: 2.5rem 1.5rem;
-                            background: #0a0a0a;
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: flex-start;
-                            align-items: flex-start;
-                            text-align: left;
-                            gap: 2.5rem; /* Explicit gap to bring price and address closer */
-                        }
-
-                        /* Architectural Design Lines */
-                        .framed-content::before {
-                            content: "";
-                            position: absolute;
-                            top: 0;
-                            left: 1.5rem;
-                            width: 1px;
-                            height: 100%;
-                            background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
-                        }
-
-                        .top-left-address {
-                            text-align: left;
-                            margin: 0;
-                            padding-left: 1.5rem;
                         }
 
                         .tech-tag {
-                            font-size: 0.55rem;
+                            font-size: 0.6rem;
+                            justify-content: center;
                         }
+
+                        .tech-tag::after { width: 30px; }
 
                         .framed-name {
                             font-size: 1.8rem;
                             letter-spacing: 0.15em;
-                            color: #fff;
-                            text-shadow: none;
-                            max-width: 100%;
+                        }
+
+                        .view-gallery-action {
+                            margin: 0;
+                            width: 100%;
+                        }
+
+                        .ghost-gallery-btn {
+                            width: 100%;
+                            justify-content: center;
+                            padding: 1.2rem;
+                            font-size: 0.7rem;
                         }
 
                         .bottom-right-hud {
                             width: 100%;
-                            justify-content: flex-start;
                         }
 
                         .framed-hud-tech {
-                            background: transparent;
-                            border: none;
-                            padding: 1rem 0 1rem 1.5rem;
-                            width: 100%;
-                            gap: 1.2rem;
-                            backdrop-filter: none;
-                        }
-
-                        .tech-hud-header {
-                            gap: 0.5rem;
-                        }
-
-                        .tech-hud-main {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 1rem;
+                            min-width: 0;
+                            padding: 2.5rem 1.5rem;
                         }
 
                         .tech-price-large {
-                            font-size: 1.8rem; 
-                            letter-spacing: 0.15em;
-                            margin: 0;
-                            line-height: 1.1;
+                            font-size: 1.8rem;
                         }
 
                         .tech-specs-row {
                             gap: 1rem;
-                            font-size: 0.6rem;
-                            flex-wrap: nowrap;
+                            font-size: 0.65rem;
+                            justify-content: center;
+                            letter-spacing: 0.15rem;
                         }
 
-                        .tech-spec-item {
-                            gap: 0.4rem;
-                        }
-
+                        .tech-spec-item { gap: 0.5rem; }
+                        
                         .tech-spec-item svg {
-                            width: 12px;
-                            height: 12px;
-                        }
-
-                        .tech-spec-dot {
-                            display: block;
+                            width: 14px;
+                            height: 14px;
                         }
                     }
                 `}</style>
