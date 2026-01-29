@@ -211,7 +211,7 @@ const Home = () => {
                     .fs-price {
                         font-size: clamp(1rem, 1.5vw, 1.2rem);
                         letter-spacing: 0.1rem;
-                        margin-top: 1rem;
+                        margin: 0; /* Removed top margin for alignment */
                         font-weight: 500;
                         color: var(--color-text);
                     }
@@ -264,24 +264,27 @@ const Home = () => {
                     .fs-agent-name {
                         font-size: clamp(1.4rem, 2vw, 1.8rem); /* Smaller name */
                         font-family: var(--font-heading);
-                        margin-bottom: 0.5rem; /* Increased spacing */
-                        line-height: 1.1;
+                        margin-bottom: 0.2rem; 
+                        line-height: 1.2;
                         color: var(--color-text);
                     }
                     .fs-agent-contact {
-                        font-size: 1rem; /* Smaller contact */
-                        margin-bottom: 0.5rem; /* Increased spacing */
+                        font-family: var(--font-body);
+                        font-size: 0.9rem;
                         font-weight: 300;
-                        color: #333;
-                        line-height: 1.4; /* Match left column line-height */
+                        color: var(--color-text);
+                        line-height: 1.6; /* Matched feature-line spacing */
+                        margin: 0;
                     }
                     .fs-agent-email {
-                        font-size: 0.8rem; /* Smaller email */
-                        color: var(--color-text-light);
+                        font-family: var(--font-body);
+                        font-size: 0.9rem;
+                        color: var(--color-text);
+                        line-height: 1.6; /* Matched feature-line spacing */
+                        opacity: 0.9;
                         border-bottom: 1px solid var(--color-border);
                         display: inline-block;
                         padding-bottom: 2px;
-                        line-height: 1.4; /* Match left column line-height */
                     }
 
                     @media (max-width: 900px) {
