@@ -299,10 +299,10 @@ const Home = () => {
                             text-align: center;
                         }
                         .fs-description {
-                            margin-top: 1rem; /* Reduced from 1.5rem/1.8rem */
+                            margin-top: 0.5rem; /* Further reduced for mobile compactness */
                         }
                         .fs-features-list {
-                            margin-top: 1.5rem !important; /* Reduced from 3rem */
+                            margin-top: 0.8rem !important; /* Further reduced to fit on one screen */
                             margin-bottom: 0.8rem;
                         }
                         .fs-left-col, .fs-right-col, .fs-agent, .fs-features-list { 
