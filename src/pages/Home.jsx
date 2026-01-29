@@ -227,13 +227,13 @@ const Home = () => {
                         display: flex;
                         flex-direction: column;
                         align-items: flex-end;
-                        gap: 2rem;
+                        gap: 0.5rem; /* Reduced gap */
                     }
                     
                     /* Property Information & Features Styles */
                     .fs-features-list {
                         text-align: right;
-                        margin-bottom: 2rem;
+                        margin-bottom: 0.5rem; /* Reduced margin */
                     }
                     .feature-line {
                         font-size: clamp(0.75rem, 1.2vw, 0.95rem);
