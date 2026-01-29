@@ -71,20 +71,8 @@ const Gallery = ({ limit = null, randomize = false }) => {
 
         <div className="gallery-grid">
           {displayImages.map((img, index) => {
-            let className = 'gallery-item';
-
-            // Layout logic: Apply masonry classes (Tetris style).
-            // optimize for straight bottom line: Ensure the last 4 items are always standard (1x1)
-            // so they can fill any gaps left by the dense grid flow.
-            const isFiller = index >= displayImages.length - 4;
             const isMobileHidden = index >= 6;
-
-            if (!isFiller) {
-              if (index % 12 === 0) className += ' big';
-              else if (index % 5 === 0) className += ' tall';
-              else if (index % 3 === 0) className += ' wide';
-            }
-
+            let className = 'gallery-item';
             if (isMobileHidden) className += ' mobile-hidden';
 
             return (
@@ -151,31 +139,18 @@ const Gallery = ({ limit = null, randomize = false }) => {
         .gallery-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          grid-auto-rows: 280px; /* Standard base height */
           gap: var(--spacing-xs);
-          grid-auto-flow: dense;  /* Fill in gaps */
         }
         
         .gallery-item {
           overflow: hidden;
           position: relative;
           background: #f0f0f0;
-          height: 100%; /* Fill the grid cell height entirely */
+          width: 100%;
+          aspect-ratio: 1 / 1; /* Force Square */
           cursor: pointer;
         }
 
-        /* Varied Sizes - Spans now perfectly align with the grid gaps */
-        .gallery-item.wide {
-            grid-column: span 2;
-        }
-        .gallery-item.tall {
-            grid-row: span 2;
-        }
-        .gallery-item.big {
-            grid-column: span 2;
-            grid-row: span 2;
-        }
-        
         .gallery-item img {
             width: 100%;
             height: 100%;
@@ -270,15 +245,10 @@ const Gallery = ({ limit = null, randomize = false }) => {
         @media (max-width: 768px) {
           .gallery-grid {
              grid-template-columns: repeat(2, 1fr);
-             grid-auto-rows: 200px;
           }
           /* Reset spans on mobile */
-          .gallery-item.wide, 
-          .gallery-item.tall, 
-          .gallery-item.big { 
-            grid-column: auto; 
-            grid-row: auto;
-            height: 300px; 
+          .gallery-item { 
+            height: auto; 
           }
           
           .lb-nav { padding: 0.5rem; font-size: 1.5rem; }

@@ -287,25 +287,13 @@ const Details = () => {
              opacity: 1 !important;
              pointer-events: auto;
              height: auto;
-             padding: 4rem 0;
+             padding: 2rem 0; /* Reduced padding */
              border-bottom: 1px solid var(--color-border);
            }
-           .details-split-layout, .details-split-layout.layout-reverse { 
-             grid-template-columns: 1fr;
-             display: flex;
-             flex-direction: column;
-           }
-           .details-image-side { 
-             order: -1; 
-             height: 50vh; 
-             width: 100%;
-             transform: none !important;
-             filter: none !important;
-             opacity: 1 !important;
-           }
+           /* ... existing styles ... */
            .details-text-side { 
              height: auto; 
-             padding: 2rem; 
+             padding: 1.5rem; /* Reduced padding */
              align-items: flex-start; 
              overflow-y: visible; 
            }

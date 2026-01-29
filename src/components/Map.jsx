@@ -111,18 +111,28 @@ const Map = () => {
             });
         };
 
-        if (!window.google) {
+        if (window.google && window.google.maps) {
+            initMap();
+        } else {
             const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
             if (apiKey) {
                 const existingScript = document.getElementById("googleMapsScript");
                 if (!existingScript) {
                     loadScript(`https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`);
+                } else {
+                    // Script exists but google object might not be ready. Wait for it.
+                    const checkGoogle = setInterval(() => {
+                        if (window.google && window.google.maps) {
+                            clearInterval(checkGoogle);
+                            initMap();
+                        }
+                    }, 100);
+                    // Clear interval on cleanup
+                    return () => clearInterval(checkGoogle);
                 }
             } else {
                 console.error("Google Maps API key is missing under VITE_GOOGLE_MAPS_API_KEY");
             }
-        } else {
-            initMap();
         }
 
     }, []);
