@@ -5,7 +5,23 @@ const Map = () => {
     const mapRef = useRef(null);
 
     useEffect(() => {
+        const loadScript = (url) => {
+            const script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = url;
+            script.id = "googleMapsScript";
+            script.async = true;
+            script.defer = true;
+            document.body.appendChild(script);
+
+            script.onload = () => {
+                initMap();
+            };
+        };
+
         const initMap = () => {
+            if (!mapRef.current || !window.google) return;
+
             // Default location if not provided
             const location = propertyInfo.map || { lat: 32.8242, lng: -96.8285 };
 
@@ -95,17 +111,18 @@ const Map = () => {
             });
         };
 
-        if (window.google && window.google.maps) {
-            initMap();
-        } else {
-            // Wait for it to load if script is async
-            const checkGoogle = setInterval(() => {
-                if (window.google && window.google.maps) {
-                    clearInterval(checkGoogle);
-                    initMap();
+        if (!window.google) {
+            const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+            if (apiKey) {
+                const existingScript = document.getElementById("googleMapsScript");
+                if (!existingScript) {
+                    loadScript(`https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`);
                 }
-            }, 100);
-            return () => clearInterval(checkGoogle);
+            } else {
+                console.error("Google Maps API key is missing under VITE_GOOGLE_MAPS_API_KEY");
+            }
+        } else {
+            initMap();
         }
 
     }, []);

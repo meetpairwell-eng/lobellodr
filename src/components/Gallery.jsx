@@ -294,7 +294,12 @@ const Gallery = ({ limit = null, randomize = false }) => {
         .view-all-container {
             display: flex;
             justify-content: center;
-            margin-top: 3rem;
+            margin-top: 4rem; /* Increased margin */
+            position: relative;
+            z-index: 20;
+            background: white; /* Ensure it covers anything behind it if overlap occurs */
+            padding: 1rem 0;
+            clear: both;
         }
         
         .view-all-btn {
