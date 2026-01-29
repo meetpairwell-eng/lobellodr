@@ -203,8 +203,9 @@ const Hero = () => {
 
                     .tech-hud-main {
                         display: grid;
-                        grid-template-columns: 1fr auto;
-                        gap: 1.5rem;
+                        grid-template-columns: auto auto;
+                        justify-content: flex-start;
+                        gap: 1.2rem;
                         align-items: center;
                     }
 
@@ -333,6 +334,7 @@ const Hero = () => {
                         .tech-hud-main {
                             display: grid;
                             grid-template-columns: 1fr auto;
+                            justify-content: stretch;
                             gap: 0.5rem 4rem;
                             align-items: flex-end;
                             width: 100%;
