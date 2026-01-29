@@ -485,7 +485,7 @@ const Hero = () => {
                     justify-content: flex-start;
                     align-items: flex-start;
                     padding-top: 12vh;
-                    padding-left: 8vw;
+                    padding-left: 15vw;
                 }
 
                 .hero-main-stack {
