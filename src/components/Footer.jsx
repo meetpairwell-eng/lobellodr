@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { agentInfo } from '../config/propertyConfig';
+import { agentInfo, propertyInfo } from '../config/propertyConfig';
 import './Footer.css';
 
 const Footer = () => {
@@ -46,7 +46,7 @@ const Footer = () => {
                                     tel: {agentInfo.officePhone}
                                 </a>
                                 <p className="footer-info-text">
-                                    {agentInfo.address}
+                                    {propertyInfo.address}, {propertyInfo.city} {propertyInfo.state} {propertyInfo.zip}
                                 </p>
                             </div>
 

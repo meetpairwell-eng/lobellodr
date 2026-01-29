@@ -35,8 +35,8 @@ export const propertyInfo = {
         sqft: "7,890",
         lotSize: "Half-Acre",
         beds: 5,
-        baths: 4,
-        powder: 3,
+        baths: 6,
+        powder: 2,
         garage: "4-Car",
     },
 
@@ -46,15 +46,22 @@ export const propertyInfo = {
         "Game Room",
         "Office",
         "Den",
-        "Outdoor Terrace",
-        "Pool"
     ],
 
     // Marketing Copy
     tagline: "Elegant Georgian Inspired Estate Home",
 
     // Meta Description for SEO
-    metaDescription: "Discover this stunning 7,890 sq ft Georgian estate in Dallas featuring 5 bedrooms, 6 baths, gourmet kitchen, pool, and exquisite finishes throughout."
+    metaDescription: "Discover this stunning 7,890 sq ft Georgian estate in Dallas featuring 5 bedrooms, 6 baths, gourmet kitchen, pool, and exquisite finishes throughout.",
+
+    // Full Description (Shortened for Hero)
+    description: "A collaboration of Georgian influence and modern precision, this Pierce Jordan Development project offers a rare level of craft in the heart of Preston Hollow. The residence is anchored by a sophisticated palette of hand-troweled plaster, limestone, and marble, creating an environment that is both substantial and light. From the professional-grade kitchen to the marble-clad primary suite, the home is designed with a focus on seamless transitions. Walls of glass open to a 40-foot pool and an expansive loggia, framing a private outdoor sanctuary intended for year-round entertaining.",
+
+    // Map Configuration
+    map: {
+        lat: 32.8943,
+        lng: -96.8122
+    }
 };
 
 // ============================================
@@ -187,7 +194,7 @@ export const detailSections = [
 // ============================================
 
 export const layout = {
-    showWelcomeScreen: true,
+    showWelcomeScreen: false,
 };
 
 // ============================================

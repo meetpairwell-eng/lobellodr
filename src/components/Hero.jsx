@@ -386,7 +386,6 @@ const Hero = () => {
                 <div className="hero-main-stack">
                     <FadeIn direction="up" distance="40px" duration={1.2}>
                         <h1 className="hero-name">{propertyInfo.address}</h1>
-                        <div className="hero-name-divider"></div>
                     </FadeIn>
                 </div>
 
@@ -516,6 +515,19 @@ const Hero = () => {
                     opacity: 0.7;
                 }
 
+                .hero-description {
+                    font-family: var(--font-heading);
+                    font-size: 1.1rem;
+                    line-height: 1.6;
+                    color: #fff;
+                    text-align: center;
+                    max-width: 600px;
+                    margin: 2rem auto 0;
+                    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+                    font-weight: 300;
+                    letter-spacing: 0.05em;
+                }
+
                 /* Floating HUD Bar */
                 .hero-hud-wrapper {
                     position: absolute;
@@ -571,26 +583,31 @@ const Hero = () => {
                         z-index: 0;
                     }
                     .hero-container {
-                        justify-content: center;
+                        justify-content: flex-start;
                         align-items: center;
-                        padding-top: 0;
+                        padding-top: 20vh; /* Move address up */
                         padding-left: 0;
                     }
                     .hero-main-stack {
                         text-align: center;
                         width: 100%;
-                        padding: 0 2rem;
+                        padding: 0 1.5rem;
                     }
                     .hero-name {
                         font-size: 3.2rem;
                         letter-spacing: -0.02em;
                         margin-right: 0.02em;
-                        white-space: normal; /* Allow wrap for long addresses */
-                        line-height: 1.2;
+                        white-space: normal;
+                        line-height: 1.1;
+                    }
+                    .hero-name-divider {
+                        display: none;
+                    }
+                    .hero-description {
+                        display: none;
                     }
                     .hero-hud-wrapper {
-                        display: flex;
-                        bottom: 4vh;
+                        display: none; /* Hide bottom text on mobile */
                     }
                     .hero-hud {
                         padding: 0.6rem 1.5rem;

@@ -325,6 +325,10 @@ const Details = () => {
              padding: 0 !important;
              width: 100% !important;
            }
+           .feature-list li {
+             opacity: 1 !important;
+             transform: none !important;
+           }
            .section-title { font-size: 1.5rem; }
            .fixed-stats-container { display: none !important; }
            .scroll-progress-bar { display: none; }

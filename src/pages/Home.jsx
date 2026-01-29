@@ -77,13 +77,19 @@ const Home = () => {
                                     {propertyInfo.description && (
                                         <p className="fs-description">{propertyInfo.description}</p>
                                     )}
+                                    <button
+                                        className="explore-btn"
+                                        onClick={() => document.getElementById('details-start')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                                    >
+                                        EXPLORE LOBELLO ↓
+                                    </button>
                                 </div>
                             </FadeIn>
 
                             {/* Right Column: Property Specs & Agent Info */}
                             <FadeIn direction="up" distance="30px" delay={200}>
                                 <div className="fs-right-col">
-                                    {/* Property Information & Features */}
+                                    {/* Property Information & Features - Balanced for 4 lines */}
                                     <div className="fs-features-list">
                                         <div className="feature-line">
                                             {propertyInfo.specs.beds} Beds | {propertyInfo.specs.baths} Baths | {propertyInfo.specs.powder} Powder
@@ -92,10 +98,10 @@ const Home = () => {
                                             {propertyInfo.specs.sqft} SQ FT | {propertyInfo.specs.lotSize} Lot
                                         </div>
                                         <div className="feature-line">
-                                            {propertyInfo.features.filter(f => f !== 'Hardwood Floors').join(' | ')}
+                                            Study | Game Room | Office | Den
                                         </div>
                                         <div className="feature-line">
-                                            Outdoor Terrace | Pool | Hardwood Floors | {propertyInfo.specs.garage} Garage
+                                            Pool | Outdoor Terrace | {propertyInfo.specs.garage} Garage
                                         </div>
                                     </div>
 
@@ -234,6 +240,32 @@ const Home = () => {
                         opacity: 0.9;
                     }
 
+                    .explore-btn {
+                        display: none; /* Hidden on desktop */
+                    }
+
+                    @media (max-width: 900px) {
+                        .explore-btn {
+                            display: inline-block;
+                            margin-top: 1.5rem;
+                            padding: 0.5rem 1rem;
+                            background: transparent;
+                            border: 1px solid var(--color-border);
+                            border-radius: 20px;
+                            font-family: var(--font-heading);
+                            font-size: 0.8rem;
+                            letter-spacing: 0.1em;
+                            color: var(--color-text);
+                            text-transform: uppercase;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                        }
+                        .explore-btn:active {
+                            background: var(--color-text);
+                            color: #fff;
+                        }
+                    }
+
                     /* Right Column Styles */
                     .fs-right-col {
                         text-align: right;
@@ -299,7 +331,11 @@ const Home = () => {
 
                     @media (max-width: 900px) {
                         .fs-text-banner {
-                            padding: 1.2rem 0; /* Reduced from 2.5rem */
+                            min-height: 100vh;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 2rem 0;
                         }
                         .fs-content-layout {
                             grid-template-columns: 1fr;
@@ -322,7 +358,11 @@ const Home = () => {
                     }
                 `}</style>
             </FullScreenImage>
-            {showDetails && <Details />}
+            {showDetails && (
+                <section id="details-start">
+                    <Details />
+                </section>
+            )}
             {showGallery && <Gallery limit={20} randomize={true} />}
             {showFloorPlans && <FloorPlans />}
             <Map />
