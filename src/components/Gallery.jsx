@@ -77,12 +77,15 @@ const Gallery = ({ limit = null, randomize = false }) => {
             // optimize for straight bottom line: Ensure the last 4 items are always standard (1x1)
             // so they can fill any gaps left by the dense grid flow.
             const isFiller = index >= displayImages.length - 4;
+            const isMobileHidden = index >= 6;
 
             if (!isFiller) {
               if (index % 12 === 0) className += ' big';
               else if (index % 5 === 0) className += ' tall';
               else if (index % 3 === 0) className += ' wide';
             }
+
+            if (isMobileHidden) className += ' mobile-hidden';
 
             return (
               <div
@@ -281,6 +284,10 @@ const Gallery = ({ limit = null, randomize = false }) => {
           .lb-nav { padding: 0.5rem; font-size: 1.5rem; }
           .lb-prev { left: 10px; }
           .lb-next { right: 10px; }
+          
+          .mobile-hidden {
+              display: none !important;
+          }
         }
 
         /* View All Button */

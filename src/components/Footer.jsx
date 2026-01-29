@@ -80,7 +80,7 @@ const Footer = () => {
                     <div className="footer-bottom-logos">
                         <div className="realtor-logos">
                             <img
-                                src="https://pub-0a14d2bf83cc482ab589da588a45c6b0.r2.dev/main-page/realtor-equal-housing.png"
+                                src="https://pub-0a14d2bf83cc482ab589da588a45c6b0.r2.dev/main-page/realtor-eho-logo.webp"
                                 alt="Realtor and Equal Housing Opportunity"
                             />
                         </div>

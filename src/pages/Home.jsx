@@ -6,6 +6,7 @@ import FullScreenImage from '../components/FullScreenImage';
 import StaticSection from '../components/StaticSection';
 import FadeIn from '../components/FadeIn';
 import FloorPlans from '../components/FloorPlans';
+import Map from '../components/Map';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { images, propertyInfo, agentInfo, layout } from '../config/propertyConfig';
@@ -79,6 +80,9 @@ const Home = () => {
                                         <span className="stat-line">Outdoor Terrace | Pool | {propertyInfo.specs.garage} Garage</span>
                                     </div>
                                     <div className="fs-price">{propertyInfo.price}</div>
+                                    {propertyInfo.description && (
+                                        <p className="fs-description">{propertyInfo.description}</p>
+                                    )}
                                 </div>
                             </FadeIn>
 
@@ -198,6 +202,15 @@ const Home = () => {
                         font-weight: 500;
                         color: var(--color-text);
                     }
+                    .fs-description {
+                        font-family: var(--font-body);
+                        font-size: 0.9rem;
+                        line-height: 1.6;
+                        margin-top: 1.5rem;
+                        max-width: 600px;
+                        color: var(--color-text);
+                        opacity: 0.9;
+                    }
 
                     /* Right Column Styles */
                     .fs-agent { 
@@ -252,6 +265,7 @@ const Home = () => {
             {showDetails && <Details />}
             {showGallery && <Gallery limit={20} randomize={true} />}
             {showFloorPlans && <FloorPlans />}
+            <Map />
             <Footer />
         </main>
     );
