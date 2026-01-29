@@ -385,7 +385,10 @@ const Hero = () => {
             <div className="hero-container">
                 <div className="hero-main-stack">
                     <FadeIn direction="up" distance="40px" duration={1.2}>
-                        <h1 className="hero-name">{propertyInfo.address}</h1>
+                        <h1 className="hero-name">
+                            <span className="addr-num">{propertyInfo.address.split(' ')[0]}</span>
+                            <span className="addr-street">{propertyInfo.address.split(' ').slice(1).join(' ')}</span>
+                        </h1>
                     </FadeIn>
                 </div>
 
@@ -504,8 +507,10 @@ const Hero = () => {
                     color: #ffffff;
                     text-shadow: 0 4px 20px rgba(0,0,0,0.15);
                     margin-right: 0.02em;
-                    white-space: nowrap;
                 }
+
+                .addr-num, .addr-street { display: inline; }
+                .addr-street { margin-left: 0.3em; }
 
                 .hero-name-divider {
                     width: 100px;
@@ -584,21 +589,35 @@ const Hero = () => {
                     }
                     .hero-container {
                         justify-content: flex-start;
-                        align-items: center;
-                        padding-top: 20vh; /* Move address up */
-                        padding-left: 0;
+                        align-items: flex-start; /* Left align items */
+                        padding-top: 20vh;
+                        padding-left: 2rem; /* Add indentation */
                     }
                     .hero-main-stack {
-                        text-align: center;
+                        text-align: left; /* Left align text */
                         width: 100%;
-                        padding: 0 1.5rem;
+                        padding: 0;
                     }
                     .hero-name {
-                        font-size: 3.2rem;
+                        color: #ffffff;
+                        text-transform: uppercase;
+                        margin: 0;
+                        text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                        line-height: 0.95;
+                    }
+                    
+                    .addr-num {
+                        display: block;
+                        font-size: clamp(2.5rem, 11.5vw, 3.8rem); /* Responsive size to fit width */
+                        line-height: 1;
+                        margin-bottom: 0;
+                    }
+                    .addr-street {
+                        display: block;
+                        font-size: clamp(2.5rem, 11.5vw, 3.8rem); /* Responsive size to fit width */
                         letter-spacing: -0.02em;
-                        margin-right: 0.02em;
-                        white-space: normal;
-                        line-height: 1.1;
+                        white-space: nowrap;
+                        margin-left: 0;
                     }
                     .hero-name-divider {
                         display: none;
