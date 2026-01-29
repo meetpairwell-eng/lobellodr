@@ -236,12 +236,13 @@ const Home = () => {
                         margin-bottom: 0.5rem; /* Reduced margin */
                     }
                     .feature-line {
-                        font-size: clamp(0.75rem, 1.2vw, 0.95rem);
-                        letter-spacing: 0.1rem;
-                        font-weight: 300;
-                        color: var(--color-text); /* Darkened text */
-                        text-transform: uppercase;
+                        font-family: var(--font-body);
+                        font-size: 0.9rem;
+                        color: var(--color-text);
                         line-height: 1.6;
+                        text-transform: none;
+                        letter-spacing: normal;
+                        opacity: 0.9;
                     }
                     
                     .fs-agent { 
