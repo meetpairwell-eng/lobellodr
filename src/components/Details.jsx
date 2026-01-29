@@ -278,32 +278,55 @@ const Details = () => {
              height: auto !important;
            }
            .details-sticky {
-             position: relative;
-             height: auto;
-             overflow: visible;
+             position: relative !important;
+             height: auto !important;
+             overflow: visible !important;
            }
            .details-slide {
-             position: relative;
+             position: relative !important;
              opacity: 1 !important;
-             pointer-events: auto;
-             height: auto;
-             padding: 2rem 0; /* Reduced padding */
-             border-bottom: 1px solid var(--color-border);
+             pointer-events: auto !important;
+             height: auto !important;
+             padding: 0 !important; /* Remove padding between slides */
+             border-bottom: none !important; /* Remove border */
+             display: block !important;
+             margin-bottom: 2rem !important; /* Small gap between sections */
            }
-           /* ... existing styles ... */
+           .details-split-layout, .details-split-layout.layout-reverse { 
+             grid-template-columns: 1fr !important;
+             display: flex !important;
+             flex-direction: column !important;
+             width: 100% !important;
+           }
+           .details-image-side { 
+             order: -1 !important; /* Force Image to Top */
+             height: 50vh !important;
+             width: 100% !important;
+             transform: none !important;
+             filter: none !important;
+             opacity: 1 !important;
+             margin: 0 !important;
+           }
            .details-text-side { 
-             height: auto; 
-             padding: 1.5rem; /* Reduced padding */
-             align-items: flex-start; 
-             overflow-y: visible; 
+             order: 2 !important; /* Force Text to Bottom */
+             height: auto !important; 
+             padding: 2rem 1.5rem 0 1.5rem !important; /* Text padding */
+             align-items: flex-start !important; 
+             justify-content: flex-start !important;
+             overflow-y: visible !important; 
+             width: 100% !important;
+             background: var(--color-bg) !important;
            }
            .details-text-container {
              opacity: 1 !important;
              transform: none !important;
              filter: none !important;
+             margin: 0 !important;
+             padding: 0 !important;
+             width: 100% !important;
            }
            .section-title { font-size: 1.5rem; }
-           .fixed-stats-container { bottom: 0; width: 100%; border: none; border-top: 1px solid #eee; position: relative; transform: none !important; }
+           .fixed-stats-container { display: none !important; }
            .scroll-progress-bar { display: none; }
         }
       `}</style>
