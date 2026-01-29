@@ -199,7 +199,7 @@ const Hero = () => {
                     }
 
                     .framed-hud-tech {
-                        padding-left: 1.5rem;
+                        padding: 0 1.5rem;
                         width: 100%;
                     }
 
@@ -343,8 +343,6 @@ const Hero = () => {
                         }
                     }
                 `}</style>
-                );
-    }
             </section>
         );
     }
