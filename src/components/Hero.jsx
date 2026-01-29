@@ -1,5 +1,6 @@
 import React from 'react';
 import { images, propertyInfo } from '../config/propertyConfig';
+import FadeIn from './FadeIn';
 
 const Hero = () => {
     return (
@@ -26,12 +27,29 @@ const Hero = () => {
                 className="hero-mobile-bg"
             />
 
-            {/* Optional Overlay if needed later, currently transparent in CSS */}
+            {/* Clean, Modern Overlay (Subtle) */}
             <div className="hero-overlay"></div>
 
             <div className="hero-container">
                 <div className="hero-main-stack">
-                    <h1 className="hero-name">{propertyInfo.address}</h1>
+                    <FadeIn direction="up" distance="40px" duration={1.2}>
+                        <h1 className="hero-name">{propertyInfo.address}</h1>
+                    </FadeIn>
+                </div>
+
+                {/* Floating Modern HUD */}
+                <div className="hero-hud-wrapper">
+                    <FadeIn direction="up" distance="20px" delay={600} duration={1}>
+                        <div className="hero-hud">
+                            <div className="hud-item hud-price">{propertyInfo.price}</div>
+                            <div className="hud-divider"></div>
+                            <div className="hud-item">{propertyInfo.specs.beds} BEDS</div>
+                            <div className="hud-divider"></div>
+                            <div className="hud-item">{propertyInfo.specs.baths} BATHS</div>
+                            <div className="hud-divider"></div>
+                            <div className="hud-item">{propertyInfo.specs.sqft.toLocaleString()} SQ FT</div>
+                        </div>
+                    </FadeIn>
                 </div>
             </div>
 
@@ -44,7 +62,7 @@ const Hero = () => {
                     align-items: center;
                     justify-content: center;
                     overflow: hidden;
-                    padding-top: 0;
+                    background: #fff;
                 }
 
                 /* Video Background */
@@ -56,12 +74,12 @@ const Hero = () => {
                     height: 100%;
                     object-fit: cover;
                     z-index: 0;
+                    opacity: 0.95;
                 }
 
                 /* Mobile Image Background */
                 .hero-mobile-bg {
                     display: none;
-                    /* Hidden by default on desktop */
                     position: absolute;
                     top: 0;
                     left: 0;
@@ -71,21 +89,21 @@ const Hero = () => {
                     z-index: 0;
                 }
 
-                /* Fallback gradient if video fails */
+                /* Fallback gradient */
                 .hero-video-fallback {
                     position: absolute;
                     top: 0;
                     left: 0;
                     right: 0;
                     bottom: 0;
-                    background-color: #000000;
+                    background-color: #f8f8f8;
                     background-image: url('${images.cover}');
                     background-size: cover;
                     background-position: center;
                     z-index: 0;
                 }
 
-                /* Dark Overlay for Text Readability - REFINED */
+                /* Refined Modern Overlay - Very Subtle */
                 .hero-overlay {
                     position: absolute;
                     top: 0;
@@ -94,135 +112,115 @@ const Hero = () => {
                     bottom: 0;
                     background: linear-gradient(
                         to bottom,
-                        rgba(0,0,0,0.1) 0%,
-                        rgba(0,0,0,0.2) 40%,
-                        rgba(0,0,0,0.5) 100%
+                        rgba(255,255,255,0.05) 0%,
+                        rgba(0,0,0,0.02) 50%,
+                        rgba(0,0,0,0.1) 100%
                     );
-                    z-index: 1 !important;
+                    z-index: 1;
                 }
 
                 /* Container & Content Layout */
                 .hero-container {
                     position: relative;
-                    z-index: 10 !important;
+                    z-index: 10;
                     width: 100%;
+                    height: 100vh;
                     display: flex;
+                    flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    min-height: 100vh;
                 }
 
                 .hero-main-stack {
-                    text-align: center !important;
-                    max-width: 1200px !important;
-                    width: 100% !important;
-                    display: flex !important;
-                    flex-direction: column !important;
-                    align-items: center !important;
-                    justify-content: center !important;
-                    z-index: 11 !important;
-                    padding: 2rem;
-                    /* Subtle glass effect behind text */
-                    backdrop-filter: blur(2px);
-                    -webkit-backdrop-filter: blur(2px);
+                    text-align: center;
+                    width: 100%;
+                    padding: 0 2rem;
+                    margin-bottom: 4vh;
                 }
 
-                /* Typography - REFINED WHITE */
+                /* Typography - DRAMATIC MARCELLUS */
                 .hero-name {
-                    font-family: var(--font-heading);
-                    font-size: clamp(2rem, 6.4vw, 4.4rem);
+                    font-family: 'Marcellus', serif;
+                    font-size: clamp(2.5rem, 8vw, 6.5rem);
                     font-weight: 300;
                     text-transform: uppercase;
-                    letter-spacing: 0.15em;
-                    margin-bottom: 0.5rem;
-                    line-height: 1.1;
-                    color: #ffffff !important;
-                    /* Layered shadow for professional depth */
-                    text-shadow: 
-                        0 2px 10px rgba(0,0,0,0.3),
-                        0 10px 20px rgba(0,0,0,0.2);
-                    z-index: 12 !important;
+                    letter-spacing: 0.3em; /* Dramatic wide spacing */
+                    margin: 0;
+                    line-height: 1;
+                    color: #ffffff;
+                    text-shadow: 0 4px 20px rgba(0,0,0,0.15);
+                    margin-right: -0.3em; /* Compensate for last letter spacing */
                 }
 
-                .hero-subtitle {
-                    font-family: var(--font-body);
-                    font-size: clamp(0.75rem, 1.2vw, 0.9rem);
-                    letter-spacing: 0.45em;
-                    font-weight: 400;
-                    /* REGULAR WEIGHT */
-                    margin-bottom: 3rem;
-                    color: #ffffff !important;
-                    /* ABSOLUTE WHITE */
-                    text-transform: uppercase;
-                    opacity: 1;
-                    text-shadow: none !important;
-                    z-index: 12 !important;
-                }
-
-                .hero-actions {
+                /* Floating HUD Bar */
+                .hero-hud-wrapper {
+                    position: absolute;
+                    bottom: 8vh;
+                    width: 100%;
                     display: flex;
                     justify-content: center;
-                    width: 100%;
+                    padding: 0 2rem;
                 }
 
-                /* Minimalist Button */
-                .btn-hero {
-                    display: inline-block;
-                    padding: 0.88rem 2.4rem;
-                    /* 20% smaller than 1.1rem 3rem */
+                .hero-hud {
+                    display: flex;
+                    align-items: center;
+                    padding: 0.75rem 2.5rem;
+                    background: rgba(255, 255, 255, 0.15);
+                    backdrop-filter: blur(15px) saturate(180%);
+                    -webkit-backdrop-filter: blur(15px) saturate(180%);
+                    border: 1px solid rgba(255, 255, 255, 0.3);
+                    border-radius: 100px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                }
+
+                .hud-item {
                     font-family: var(--font-body);
-                    font-size: 0.65rem;
-                    /* 20% smaller than 0.8rem */
+                    font-size: 0.75rem;
                     font-weight: 500;
-                    /* MEDIUM WEIGHT */
-                    letter-spacing: 0.25em;
-                    /* Spaced out for luxury feel */
+                    letter-spacing: 0.2em;
+                    color: #ffffff;
                     text-transform: uppercase;
-                    color: #ffffff !important;
-                    border: 1px solid #ffffff;
-                    background: transparent;
-                    text-decoration: none;
-                    transition: all 0.3s ease;
-                    z-index: 12 !important;
+                    white-space: nowrap;
                 }
 
-                .btn-hero:hover {
-                    background: #ffffff;
-                    color: #1a1a1a !important;
+                .hud-price {
+                    font-weight: 600;
+                    font-family: 'Marcellus', serif;
+                    font-size: 0.9rem;
+                }
+
+                .hud-divider {
+                    width: 1px;
+                    height: 12px;
+                    background: rgba(255, 255, 255, 0.4);
+                    margin: 0 1.5rem;
                 }
 
                 /* Mobile Adjustments */
-                @media (max-width: 768px) {
-                    /* Hide video, show image */
+                @media (max-width: 900px) {
                     .hero-video {
                         display: none;
                     }
-
-                    /* Hide the blue fallback on mobile so the image is seen */
-                    .hero-video-fallback {
-                        display: none !important;
-                    }
-
                     .hero-mobile-bg {
                         display: block;
-                        z-index: 1;
-                        /* Ensure it sits above any potential background */
+                        z-index: 0;
                     }
-
                     .hero-name {
-                        font-size: 2.2rem;
-                        letter-spacing: 0.1em;
+                        font-size: 2.8rem;
+                        letter-spacing: 0.2em;
+                        margin-right: -0.2em;
                     }
-
-                    .hero-subtitle {
-                        font-size: 0.7rem;
-                        letter-spacing: 0.3em;
-                        margin-bottom: 2rem;
+                    .hero-hud {
+                        padding: 0.6rem 1.5rem;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        border-radius: 20px;
+                        gap: 0.8rem;
+                        background: rgba(255, 255, 255, 0.2);
                     }
-
-                    .btn-hero {
-                        padding: 0.9rem 2rem;
-                        font-size: 0.75rem;
+                    .hud-divider {
+                        display: none;
                     }
                 }
             `}</style>
