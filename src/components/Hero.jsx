@@ -15,7 +15,7 @@ const Hero = () => {
     if (isBrickellia) {
         return (
             <section className="hero-framed">
-                {/* Main Media Background */}
+                {/* Top Half Media */}
                 <div className="hero-media-wrapper">
                     {images.video ? (
                         <video className="hero-media-bg" autoPlay loop muted playsInline>
@@ -27,7 +27,7 @@ const Hero = () => {
                     <div className="hero-overlay-subtle"></div>
                 </div>
 
-                {/* Frame Border - Becomes corner brackets on mobile */}
+                {/* Frame Border - Corner Brackets over Top Half */}
                 <div className="hero-frame-border">
                     <div className="corner-tl"></div>
                     <div className="corner-tr"></div>
@@ -35,30 +35,27 @@ const Hero = () => {
                     <div className="corner-br"></div>
                 </div>
 
-                {/* Content Overlay */}
+                {/* Bottom Half Content Overlay */}
                 <div className="framed-content">
-                    <div className="glass-panel main-address-panel">
+                    <div className="top-left-address">
                         <FadeIn direction="down" distance="30px" duration={1.5}>
                             <div className="tech-tag">RESIDENCE // 5168</div>
                             <h1 className="framed-name">{propertyInfo.address}</h1>
                         </FadeIn>
                     </div>
 
-                    {/* View Gallery Button */}
-                    <div className="view-gallery-action">
-                        <FadeIn direction="up" distance="20px" delay={600}>
-                            <button className="ghost-gallery-btn" onClick={scrollToGallery}>
-                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><circle cx="8.5" cy="8.5" r="1.5" /><path d="M21 15l-5-5L5 21" /></svg>
-                                <span>VIEW PHOTOS</span>
-                            </button>
-                        </FadeIn>
-                    </div>
-
+                    {/* Modern Tech HUD Dashboard */}
                     <div className="bottom-right-hud">
                         <FadeIn direction="up" distance="20px" delay={800} duration={1}>
-                            <div className="glass-panel framed-hud-tech">
+                            <div className="framed-hud-tech">
                                 <div className="tech-hud-main">
-                                    <div className="tech-price-large">{propertyInfo.price}</div>
+                                    <div className="tech-header-row">
+                                        <div className="tech-price-large">{propertyInfo.price}</div>
+                                        <button className="ghost-photos-btn" onClick={scrollToGallery}>
+                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><circle cx="8.5" cy="8.5" r="1.5" /><path d="M21 15l-5-5L5 21" /></svg>
+                                            <span>VIEW PHOTOS</span>
+                                        </button>
+                                    </div>
                                     <div className="tech-specs-row">
                                         <div className="tech-spec-item">
                                             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8M4 10V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5M12 4v6M2 18h20" /></svg>
@@ -89,16 +86,13 @@ const Hero = () => {
                         background: #000;
                         overflow: hidden;
                         display: flex;
-                        justify-content: center;
-                        align-items: center;
+                        flex-direction: column;
                     }
 
                     .hero-media-wrapper {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
+                        position: relative;
                         width: 100%;
-                        height: 100%;
+                        height: 55vh;
                         z-index: 1;
                     }
 
@@ -106,7 +100,7 @@ const Hero = () => {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
-                        opacity: 0.85;
+                        opacity: 1;
                     }
 
                     .hero-overlay-subtle {
@@ -115,64 +109,68 @@ const Hero = () => {
                         left: 0;
                         width: 100%;
                         height: 100%;
-                        background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 100%);
+                        background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, transparent 100%);
                     }
 
-                    /* Frame Border & Brackets */
+                    /* Frame Border Brackets (over media) */
                     .hero-frame-border {
                         position: absolute;
-                        top: 2rem;
-                        left: 2rem;
-                        right: 2rem;
-                        bottom: 2rem;
-                        border: 1px solid rgba(255, 255, 255, 0.15);
+                        top: 1.5rem;
+                        left: 1.5rem;
+                        right: 1.5rem;
+                        height: calc(55vh - 3rem);
                         z-index: 5;
                         pointer-events: none;
                     }
 
                     .corner-tl, .corner-tr, .corner-bl, .corner-br {
                         position: absolute;
-                        width: 30px;
-                        height: 30px;
+                        width: 25px;
+                        height: 25px;
                         border: 1px solid rgba(255,255,255,0.4);
                         z-index: 6;
                     }
-                    .corner-tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
-                    .corner-tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
-                    .corner-bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
-                    .corner-br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
-
-                    /* Glassmorphism Panels */
-                    .glass-panel {
-                        background: rgba(0, 0, 0, 0.25);
-                        backdrop-filter: blur(15px);
-                        -webkit-backdrop-filter: blur(15px);
-                        border: 1px solid rgba(255, 255, 255, 0.1);
-                        padding: 2.5rem;
-                    }
+                    .corner-tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+                    .corner-tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+                    .corner-bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+                    .corner-br { bottom: 0; right: 0; border-left: none; border-top: none; }
 
                     .framed-content {
                         position: relative;
                         z-index: 10;
                         width: 100%;
-                        height: 100%;
-                        padding: 5rem;
+                        height: 45vh;
+                        padding: 3rem 2rem;
+                        background: #0a0a0a;
                         display: flex;
                         flex-direction: column;
-                        justify-content: space-between;
+                        justify-content: flex-start;
                         align-items: flex-start;
+                        gap: 2.5rem;
                     }
 
-                    .main-address-panel {
-                        padding: 2rem 3.5rem;
+                    /* Architectural Design Lines */
+                    .framed-content::before {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 2rem;
+                        width: 1px;
+                        height: 100%;
+                        background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
+                    }
+
+                    .top-left-address {
+                        text-align: left;
+                        padding-left: 1.5rem;
                     }
 
                     .tech-tag {
                         font-family: var(--font-body);
-                        font-size: 0.7rem;
+                        font-size: 0.6rem;
                         letter-spacing: 0.5em;
-                        color: rgba(255,255,255,0.6);
-                        margin-bottom: 1.2rem;
+                        color: rgba(255,255,255,0.4);
+                        margin-bottom: 1rem;
                         display: flex;
                         align-items: center;
                         gap: 1.5rem;
@@ -180,60 +178,29 @@ const Hero = () => {
 
                     .tech-tag::after {
                         content: "";
-                        width: 50px;
+                        width: 40px;
                         height: 1px;
-                        background: rgba(255,255,255,0.3);
+                        background: rgba(255,255,255,0.2);
                     }
 
                     .framed-name {
                         font-family: 'Marcellus', serif;
-                        font-size: clamp(2.2rem, 5.5vw, 4.5rem);
+                        font-size: 1.8rem;
                         font-weight: 300;
                         text-transform: uppercase;
-                        letter-spacing: 0.25em;
+                        letter-spacing: 0.2em;
                         line-height: 1.1;
                         color: #ffffff;
                         margin: 0;
                     }
 
-                    /* View Gallery Button */
-                    .view-gallery-action {
-                        margin-left: 3.5rem;
-                        margin-top: 2rem;
-                    }
-
-                    .ghost-gallery-btn {
-                        background: rgba(255,255,255,0.05);
-                        backdrop-filter: blur(5px);
-                        border: 1px solid rgba(255,255,255,0.2);
-                        color: #fff;
-                        padding: 1.2rem 2.5rem;
-                        font-family: var(--font-body);
-                        font-size: 0.75rem;
-                        letter-spacing: 0.35em;
-                        display: flex;
-                        align-items: center;
-                        gap: 1.2rem;
-                        cursor: pointer;
-                        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-                    }
-
-                    .ghost-gallery-btn:hover {
-                        background: rgba(255,255,255,1);
-                        color: #000;
-                        transform: translateY(-2px);
-                        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-                    }
-
                     .bottom-right-hud {
                         width: 100%;
-                        display: flex;
-                        justify-content: flex-end;
                     }
 
                     .framed-hud-tech {
-                        padding: 2.5rem 4rem;
-                        min-width: 480px;
+                        padding-left: 1.5rem;
+                        width: 100%;
                     }
 
                     .tech-hud-main {
@@ -242,129 +209,142 @@ const Hero = () => {
                         gap: 1.5rem;
                     }
 
+                    .tech-header-row {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        width: 100%;
+                        gap: 2rem;
+                    }
+
                     .tech-price-large {
                         font-family: 'Marcellus', serif;
-                        font-size: clamp(2.5rem, 6.5vw, 4.5rem);
+                        font-size: 1.8rem;
                         color: #fff;
                         letter-spacing: 0.15em;
                         line-height: 1;
                         text-transform: uppercase;
                     }
 
+                    .ghost-photos-btn {
+                        background: transparent;
+                        border: 1px solid rgba(255,255,255,0.2);
+                        color: rgba(255,255,255,0.8);
+                        padding: 0.6rem 1.2rem;
+                        font-size: 0.65rem;
+                        letter-spacing: 0.2em;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.8rem;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                    }
+
+                    .ghost-photos-btn:hover {
+                        background: #fff;
+                        color: #000;
+                        border-color: #fff;
+                    }
+
                     .tech-specs-row {
                         display: flex;
                         align-items: center;
-                        gap: 2.5rem;
-                        color: rgba(255,255,255,0.7);
+                        gap: 1.5rem;
+                        color: rgba(255,255,255,0.6);
                         font-family: var(--font-body);
-                        font-size: 0.9rem;
-                        letter-spacing: 0.25rem;
+                        font-size: 0.65rem;
+                        letter-spacing: 0.2rem;
                         text-transform: uppercase;
                     }
 
                     .tech-spec-item {
                         display: flex;
                         align-items: center;
-                        gap: 0.8rem;
+                        gap: 0.6rem;
                     }
 
                     .tech-spec-item svg {
-                        opacity: 0.6;
-                        width: 18px;
-                        height: 18px;
+                        opacity: 0.5;
+                        width: 14px;
+                        height: 14px;
                     }
 
                     .tech-spec-dot {
-                        width: 5px;
-                        height: 5px;
-                        background: rgba(255,255,255,0.3);
+                        width: 4px;
+                        height: 4px;
+                        background: rgba(255,255,255,0.2);
                         border-radius: 50%;
                     }
 
-                    /* Mobile Adjustments - High-Tech Minimalist */
-                    @media (max-width: 900px) {
-                        .hero-frame-border {
-                            top: 1rem;
-                            left: 1rem;
-                            right: 1rem;
-                            bottom: 1rem;
+                    /* Desktop Reset */
+                    @media (min-width: 901px) {
+                        .hero-framed {
+                            flex-direction: row;
+                            justify-content: center;
+                            align-items: center;
+                            padding: 2rem;
                         }
 
-                        .corner-tl, .corner-tr, .corner-bl, .corner-br {
-                            width: 25px;
-                            height: 25px;
+                        .hero-media-wrapper {
+                            position: absolute;
+                            top: 0; left: 0;
+                            width: 100%; height: 100%;
+                            z-index: 1;
+                        }
+
+                        .hero-media-bg {
+                            opacity: 0.9;
+                        }
+
+                        .hero-frame-border {
+                            top: 2rem; left: 2rem;
+                            right: 2rem; bottom: 2rem;
+                            height: auto;
+                            border: 1px solid rgba(255,255,255,0.2);
                         }
 
                         .framed-content {
-                            padding: 2rem;
-                            justify-content: center;
-                            gap: 1rem;
-                            align-items: center;
-                            text-align: center;
+                            height: 100%;
+                            padding: 5rem;
+                            background: transparent;
+                            justify-content: space-between;
+                            align-items: flex-start;
+                            gap: 0;
                         }
 
-                        .glass-panel {
-                            padding: 2rem 1.5rem;
-                            width: 100%;
-                            background: rgba(0, 0, 0, 0.4);
+                        .framed-content::before {
+                            display: none;
                         }
 
-                        .main-address-panel {
-                            padding: 2.5rem 1.5rem;
-                        }
-
-                        .tech-tag {
-                            font-size: 0.6rem;
-                            justify-content: center;
-                        }
-
-                        .tech-tag::after { width: 30px; }
-
-                        .framed-name {
-                            font-size: 1.8rem;
-                            letter-spacing: 0.15em;
-                        }
-
-                        .view-gallery-action {
-                            margin: 0;
-                            width: 100%;
-                        }
-
-                        .ghost-gallery-btn {
-                            width: 100%;
-                            justify-content: center;
-                            padding: 1.2rem;
-                            font-size: 0.7rem;
-                        }
+                        .top-left-address { padding-left: 0; }
+                        .tech-tag { font-size: 0.7rem; color: rgba(255,255,255,0.6); }
+                        .framed-name { font-size: 4.2rem; }
 
                         .bottom-right-hud {
-                            width: 100%;
+                            display: flex;
+                            justify-content: flex-end;
                         }
 
                         .framed-hud-tech {
-                            min-width: 0;
-                            padding: 2.5rem 1.5rem;
+                            background: rgba(0,0,0,0.4);
+                            backdrop-filter: blur(10px);
+                            border: 1px solid rgba(255,255,255,0.1);
+                            padding: 3rem;
+                            width: auto;
+                            min-width: 500px;
                         }
 
-                        .tech-price-large {
-                            font-size: 1.8rem;
-                        }
+                        .tech-price-large { font-size: 4.2rem; }
+                        .tech-specs-row { font-size: 0.85rem; gap: 2.5rem; color: rgba(255,255,255,0.8); }
+                        .tech-spec-item svg { width: 18px; height: 18px; }
 
-                        .tech-specs-row {
-                            gap: 1rem;
-                            font-size: 0.65rem;
-                            justify-content: center;
-                            letter-spacing: 0.15rem;
-                        }
-
-                        .tech-spec-item { gap: 0.5rem; }
-                        
-                        .tech-spec-item svg {
-                            width: 14px;
-                            height: 14px;
+                        .tech-header-row {
+                            margin-bottom: 2rem;
                         }
                     }
                 `}</style>
+                );
+    }
             </section>
         );
     }
