@@ -41,18 +41,23 @@ const Hero = () => {
                     <div className="bottom-right-hud">
                         <FadeIn direction="up" distance="20px" delay={800} duration={1}>
                             <div className="framed-hud-tech">
-                                <div className="tech-hud-header">
-                                    <span className="tech-hud-title">PROPERTY SPECIFICATIONS</span>
-                                    <div className="tech-line-h"></div>
-                                </div>
                                 <div className="tech-hud-main">
                                     <div className="tech-price-large">{propertyInfo.price}</div>
                                     <div className="tech-specs-row">
-                                        <span className="tech-spec-item">{propertyInfo.specs.beds} BEDS</span>
+                                        <div className="tech-spec-item">
+                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8M4 10V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5M12 4v6M2 18h20" /></svg>
+                                            <span>{propertyInfo.specs.beds} BEDS</span>
+                                        </div>
                                         <div className="tech-spec-dot"></div>
-                                        <span className="tech-spec-item">{propertyInfo.specs.baths} BATHS</span>
+                                        <div className="tech-spec-item">
+                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM7 8h10M7 12h10M7 16h10" /></svg>
+                                            <span>{propertyInfo.specs.baths} BATHS</span>
+                                        </div>
                                         <div className="tech-spec-dot"></div>
-                                        <span className="tech-spec-item">{propertyInfo.specs.sqft.toLocaleString()} SQ FT</span>
+                                        <div className="tech-spec-item">
+                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><path d="M9 3v18M15 3v18M3 9h18M3 15h18" /></svg>
+                                            <span>{propertyInfo.specs.sqft.toLocaleString()} SQ FT</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -226,22 +231,33 @@ const Hero = () => {
 
                     .tech-price-large {
                         font-family: 'Marcellus', serif;
-                        font-size: clamp(2.5rem, 6vw, 3.8rem);
+                        font-size: clamp(2.5rem, 6vw, 4.8rem);
                         color: #fff;
-                        letter-spacing: 0.05em;
-                        margin-bottom: 0.5rem;
-                        line-height: 1;
+                        letter-spacing: 0.15em;
+                        margin-bottom: 0.8rem;
+                        line-height: 1.1;
+                        text-transform: uppercase;
                     }
 
                     .tech-specs-row {
                         display: flex;
                         align-items: center;
-                        gap: 1rem;
-                        color: rgba(255,255,255,0.6);
+                        gap: 1.5rem;
+                        color: rgba(255,255,255,0.7);
                         font-family: var(--font-body);
-                        font-size: 0.75rem;
-                        letter-spacing: 0.15em;
+                        font-size: 0.8rem;
+                        letter-spacing: 0.2rem;
                         text-transform: uppercase;
+                    }
+
+                    .tech-spec-item {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.6rem;
+                    }
+
+                    .tech-spec-item svg {
+                        opacity: 0.6;
                     }
 
                     .tech-spec-dot {
@@ -354,14 +370,24 @@ const Hero = () => {
                         }
 
                         .tech-price-large {
-                            font-size: 2.2rem;
-                            margin: 0;
+                            font-size: 1.8rem; /* Matches framed-name size at small widths */
+                            letter-spacing: 0.15em;
+                            margin-bottom: 0.5rem;
                         }
 
                         .tech-specs-row {
-                            gap: 0.8rem;
-                            font-size: 0.65rem;
-                            flex-wrap: wrap;
+                            gap: 1rem;
+                            font-size: 0.6rem;
+                            flex-wrap: nowrap;
+                        }
+
+                        .tech-spec-item {
+                            gap: 0.4rem;
+                        }
+
+                        .tech-spec-item svg {
+                            width: 12px;
+                            height: 12px;
                         }
 
                         .tech-spec-dot {
