@@ -495,7 +495,7 @@ const Hero = () => {
                 /* Typography - DRAMATIC MARCELLUS */
                 .hero-name {
                     font-family: 'Marcellus', serif;
-                    font-size: clamp(2rem, 6vw, 5.5rem);
+                    font-size: clamp(2.3rem, 6.9vw, 6.3rem);
                     font-weight: 300;
                     text-transform: uppercase;
                     letter-spacing: -0.02em;
@@ -573,7 +573,7 @@ const Hero = () => {
                         padding: 0 2rem;
                     }
                     .hero-name {
-                        font-size: 2.8rem;
+                        font-size: 3.2rem;
                         letter-spacing: -0.02em;
                         margin-right: 0.02em;
                         white-space: normal; /* Allow wrap for long addresses */
