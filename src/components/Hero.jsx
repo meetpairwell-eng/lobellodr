@@ -321,26 +321,38 @@ const Hero = () => {
                         .framed-name { font-size: 4.2rem; }
 
                         .bottom-right-hud {
+                            width: 100%;
                             display: flex;
                             justify-content: flex-end;
+                            align-items: flex-end;
                         }
 
                         .framed-hud-tech {
-                            background: rgba(0,0,0,0.4);
-                            backdrop-filter: blur(10px);
-                            border: 1px solid rgba(255,255,255,0.1);
-                            padding: 3rem;
-                            width: auto;
-                            min-width: 500px;
+                            background: transparent;
+                            backdrop-filter: none;
+                            border: none;
+                            padding: 0;
+                            width: 100%;
+                            min-width: 0;
+                        }
+
+                        .tech-hud-main {
+                            flex-direction: row;
+                            justify-content: space-between;
+                            align-items: flex-end;
+                            width: 100%;
+                            gap: 4rem;
+                        }
+
+                        .tech-header-row {
+                            margin-bottom: 0;
+                            justify-content: flex-start;
+                            gap: 3rem;
                         }
 
                         .tech-price-large { font-size: 4.2rem; }
                         .tech-specs-row { font-size: 0.85rem; gap: 2.5rem; color: rgba(255,255,255,0.8); }
                         .tech-spec-item svg { width: 18px; height: 18px; }
-
-                        .tech-header-row {
-                            margin-bottom: 2rem;
-                        }
                     }
                 `}</style>
             </section>
