@@ -91,8 +91,12 @@ const Home = () => {
                                         <div className="feature-line">
                                             {propertyInfo.specs.sqft} SQ FT | {propertyInfo.specs.lotSize} Lot
                                         </div>
-                                        <div className="feature-line">{propertyInfo.features.join(' | ')}</div>
-                                        <div className="feature-line">Outdoor Terrace | Pool | {propertyInfo.specs.garage} Garage</div>
+                                        <div className="feature-line">
+                                            {propertyInfo.features.filter(f => f !== 'Hardwood Floors').join(' | ')}
+                                        </div>
+                                        <div className="feature-line">
+                                            Outdoor Terrace | Pool | Hardwood Floors | {propertyInfo.specs.garage} Garage
+                                        </div>
                                     </div>
 
                                     {/* Agent Info */}
@@ -173,7 +177,7 @@ const Home = () => {
                     .fs-content-layout {
                         display: grid;
                         grid-template-columns: 1.5fr 1fr;
-                        align-items: center; 
+                        align-items: flex-start; 
                         gap: 2rem; /* Closer together */
                         width: 100%;
                         max-width: 1150px; /* Widened to move margins out */
