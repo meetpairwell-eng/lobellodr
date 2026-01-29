@@ -182,29 +182,79 @@ const Hero = () => {
                         -webkit-backdrop-filter: blur(15px);
                     }
 
-                    /* Mobile Adjustments */
+                    /* Mobile Adjustments - 50/50 Split Screen */
                     @media (max-width: 900px) {
+                        .hero-framed {
+                            flex-direction: column;
+                            height: 100vh;
+                            background: #fff;
+                        }
+
+                        .hero-media-wrapper {
+                            position: relative;
+                            height: 50vh;
+                            width: 100%;
+                            z-index: 1;
+                        }
+
+                        .hero-media-bg {
+                            opacity: 1;
+                        }
+
+                        .hero-overlay-subtle {
+                            height: 20%;
+                            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, transparent 100%);
+                        }
+
                         .hero-frame-border {
-                            top: 1rem;
-                            left: 1rem;
-                            right: 1rem;
-                            bottom: 1rem;
+                            display: none;
                         }
+
                         .framed-content {
-                            padding: 3rem 2rem;
+                            height: 50vh;
+                            width: 100%;
+                            padding: 2rem;
+                            background: #ffffff;
+                            justify-content: center;
+                            align-items: center;
+                            text-align: center;
                         }
+
+                        .top-left-address {
+                            text-align: center;
+                            margin-bottom: 2rem;
+                        }
+
                         .framed-name {
-                            font-size: 2.2rem;
+                            font-size: clamp(1.8rem, 8vw, 2.4rem);
                             letter-spacing: 0.15em;
+                            color: #1a1a1a;
+                            text-shadow: none;
                         }
+
+                        .bottom-right-hud {
+                            justify-content: center;
+                            align-items: center;
+                            width: 100%;
+                        }
+
                         .framed-hud-modern {
-                            gap: 1rem;
+                            gap: 1.2rem;
+                            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                            padding: 1rem 0;
+                            flex-wrap: wrap;
+                            justify-content: center;
                         }
+
                         .hud-val {
-                            font-size: 0.6rem;
+                            font-size: 0.8rem;
+                            color: #1a1a1a;
+                            text-shadow: none;
                         }
+
                         .hud-divider-v {
-                            height: 10px;
+                            height: 12px;
+                            background: rgba(0, 0, 0, 0.1);
                         }
                     }
                 `}</style>
