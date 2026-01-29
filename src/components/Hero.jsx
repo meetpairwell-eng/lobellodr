@@ -49,29 +49,29 @@ const Hero = () => {
                         <FadeIn direction="up" distance="20px" delay={800} duration={1}>
                             <div className="framed-hud-tech">
                                 <div className="tech-hud-main">
-                                    <div className="tech-header-row">
+                                    <div className="tech-info-cluster">
                                         <div className="tech-price-large">{propertyInfo.price}</div>
-                                        <button className="ghost-photos-btn" onClick={scrollToGallery}>
-                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><circle cx="8.5" cy="8.5" r="1.5" /><path d="M21 15l-5-5L5 21" /></svg>
-                                            <span>VIEW PHOTOS</span>
-                                        </button>
-                                    </div>
-                                    <div className="tech-specs-row">
-                                        <div className="tech-spec-item">
-                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8M4 10V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5M12 4v6M2 18h20" /></svg>
-                                            <span>{propertyInfo.specs.beds} BEDS</span>
-                                        </div>
-                                        <div className="tech-spec-dot"></div>
-                                        <div className="tech-spec-item">
-                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM7 8h10M7 12h10M7 16h10" /></svg>
-                                            <span>{propertyInfo.specs.baths} BATHS</span>
-                                        </div>
-                                        <div className="tech-spec-dot"></div>
-                                        <div className="tech-spec-item">
-                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><path d="M9 3v18M15 3v18M3 9h18M3 15h18" /></svg>
-                                            <span>{propertyInfo.specs.sqft.toLocaleString()} SQ FT</span>
+                                        <div className="tech-specs-row">
+                                            <div className="tech-spec-item">
+                                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8M4 10V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5M12 4v6M2 18h20" /></svg>
+                                                <span>{propertyInfo.specs.beds} BEDS</span>
+                                            </div>
+                                            <div className="tech-spec-dot"></div>
+                                            <div className="tech-spec-item">
+                                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM7 8h10M7 12h10M7 16h10" /></svg>
+                                                <span>{propertyInfo.specs.baths} BATHS</span>
+                                            </div>
+                                            <div className="tech-spec-dot"></div>
+                                            <div className="tech-spec-item">
+                                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><path d="M9 3v18M15 3v18M3 9h18M3 15h18" /></svg>
+                                                <span>{propertyInfo.specs.sqft.toLocaleString()} SQ FT</span>
+                                            </div>
                                         </div>
                                     </div>
+                                    <button className="ghost-photos-btn" onClick={scrollToGallery}>
+                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><circle cx="8.5" cy="8.5" r="1.5" /><path d="M21 15l-5-5L5 21" /></svg>
+                                        <span>VIEW PHOTOS</span>
+                                    </button>
                                 </div>
                             </div>
                         </FadeIn>
@@ -344,15 +344,20 @@ const Hero = () => {
                             gap: 4rem;
                         }
 
-                        .tech-header-row {
-                            margin-bottom: 0;
-                            justify-content: flex-start;
-                            gap: 3rem;
+                        .tech-info-cluster {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 1rem;
+                            align-items: flex-start;
                         }
 
-                        .tech-price-large { font-size: 4.2rem; }
+                        .tech-price-large { font-size: 2.2rem; margin-bottom: 0.5rem; }
                         .tech-specs-row { font-size: 0.85rem; gap: 2.5rem; color: rgba(255,255,255,0.8); }
                         .tech-spec-item svg { width: 18px; height: 18px; }
+
+                        .ghost-photos-btn {
+                            align-self: flex-end;
+                        }
                     }
                 `}</style>
             </section>
