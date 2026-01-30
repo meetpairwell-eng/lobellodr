@@ -533,7 +533,7 @@ const Hero = () => {
                     .hero-main-stack {
                         text-align: left;
                         padding: 0;
-                        margin-top: -15vh; /* Pull up slightly */
+                        margin-top: 0; /* Changed from -15vh to 0 to lower text */
                     }
 
                     .addr-text-desktop { display: none; }
