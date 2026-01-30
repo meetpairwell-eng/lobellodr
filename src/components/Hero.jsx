@@ -384,7 +384,7 @@ const Hero = () => {
 
             <div className="hero-container">
                 <div className="hero-main-stack">
-                    <FadeIn direction="up" distance="40px" duration={2.5} delay={200}>
+                    <FadeIn direction="up" distance="40px" duration={3.5} delay={200}>
                         <h1 className="hero-name">
                             <span className="addr-num">{propertyInfo.address.split(' ')[0]}</span>
                             {/* Desktop: One line */}
