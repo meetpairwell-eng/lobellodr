@@ -71,6 +71,7 @@ const Gallery = ({ limit = null, randomize = false }) => {
 
         <div className="gallery-grid">
           {displayImages.map((img, index) => {
+            const className = 'gallery-item';
             return (
               <div
                 key={index}
