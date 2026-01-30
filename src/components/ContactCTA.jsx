@@ -154,7 +154,7 @@ const ContactCTA = () => {
             <style>{`
                 .contact-cta-section {
                     background-color: #f2f2f2; /* Light gray background */
-                    padding: 6rem 0;
+                    padding: 4rem 0;
                     border-top: 1px solid #e5e5e5;
                 }
 
@@ -175,8 +175,8 @@ const ContactCTA = () => {
                 }
 
                 .agent-image-wrapper {
-                    width: 150px;
-                    height: 150px;
+                    width: 250px;
+                    height: 250px;
                     overflow: hidden;
                     background: #ccc;
                     flex-shrink: 0;
@@ -186,6 +186,8 @@ const ContactCTA = () => {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                    transform: scale(1.25);
+                    object-position: top center;
                 }
 
                 .agent-details {
