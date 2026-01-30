@@ -63,12 +63,10 @@ const ContactCTA = () => {
                     </div>
 
                     <div className="cta-content-col">
-                        <h2 className="cta-title">Private Tours</h2>
-                        <h3 className="cta-subtitle">Presented by {agentInfo.name}</h3>
+                        <h2 className="cta-title">Contact {agentInfo.name}</h2>
 
                         <p className="cta-text">
-                            Experience the scale and detail of 5610 Lobello in person.
-                            Contact us to arrange a private viewing of the residence.
+                            Call to arrange a private viewing of the residence.
                         </p>
 
                         <div className="cta-contact-details">
