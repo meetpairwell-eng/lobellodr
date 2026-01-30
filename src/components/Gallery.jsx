@@ -71,7 +71,12 @@ const Gallery = ({ limit = null, randomize = false }) => {
 
         <div className="gallery-grid">
           {displayImages.map((img, index) => {
-            const className = 'gallery-item';
+            // Hide images after the 6th one ONLY on mobile AND if we are in preview mode (limit is set)
+            // This ensures Home page shows 6, but Full Gallery shows all.
+            const isMobileHidden = limit && index >= 6;
+            let className = 'gallery-item';
+            if (isMobileHidden) className += ' mobile-hidden';
+
             return (
               <div
                 key={index}
@@ -251,6 +256,10 @@ const Gallery = ({ limit = null, randomize = false }) => {
           .lb-nav { padding: 0.5rem; font-size: 1.5rem; }
           .lb-prev { left: 10px; }
           .lb-next { right: 10px; }
+
+          .mobile-hidden {
+              display: none !important;
+          }
         }
 
         /* View All Button */
