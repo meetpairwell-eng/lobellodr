@@ -345,7 +345,7 @@ const Details = () => {
            
            /* Force headings to fit on one line on mobile */
            .detail-heading {
-             font-size: 1.1rem !important; /* Smaller size */
+             font-size: 1.25rem !important; /* Increased by ~10-15% */
              letter-spacing: 0.05em !important; /* Tighter tracking */
              white-space: nowrap !important;
              margin-bottom: 1rem !important;
