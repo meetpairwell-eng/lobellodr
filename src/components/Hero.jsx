@@ -550,7 +550,7 @@ const Hero = () => {
                         display: block;
                         font-family: 'Montserrat', sans-serif;
                         font-weight: 300; /* Unified light weight */
-                        font-size: clamp(3.5rem, 14vw, 6rem); /* Same size for all */
+                        font-size: clamp(2.5rem, 10vw, 4.5rem); /* Same size for all */
                         letter-spacing: 0.05em;
                         line-height: 1.1;
                         margin: 0;
