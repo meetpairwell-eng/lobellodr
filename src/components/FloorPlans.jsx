@@ -43,7 +43,7 @@ const FloorPlans = () => {
                             const isPdf = src?.toLowerCase().endsWith('.pdf');
 
                             if (isPdf) {
-                                return <iframe src={`${src}#toolbar=0&navpanes=0&scrollbar=0`} title="Floor Plan" className="fp-frame" />;
+                                return <iframe src={`${src}#toolbar=0&navpanes=0&scrollbar=0&view=Fit`} title="Floor Plan" className="fp-frame" />;
                             }
                             return <img src={src} alt="Floor Plan" className="fp-frame" />;
                         })()}
@@ -201,7 +201,7 @@ const FloorPlans = () => {
         }
         
         @media (max-width: 768px) {
-            .fp-display { width: 95%; height: 80%; }
+            .fp-display { width: 95%; height: 70%; } /* Reduced height to frame PDF better */
             .fp-view-btn { padding: 0.8rem 2rem; font-size: 0.9rem; }
             .fp-content { padding-bottom: 6rem; } /* Account for mobile browser chrome */
         }
