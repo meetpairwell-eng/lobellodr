@@ -154,7 +154,7 @@ const ContactCTA = () => {
             <style>{`
                 .contact-cta-section {
                     background-color: #f2f2f2; /* Light gray background */
-                    padding: 8rem 0;
+                    padding: 4rem 0;
                     border-top: 1px solid #e5e5e5;
                 }
 
