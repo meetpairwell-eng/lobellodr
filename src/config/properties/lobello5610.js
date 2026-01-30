@@ -106,7 +106,7 @@ export const images = {
     floorPlan2: getUrl("5610LobelloFP2.png"),
 
     // Agent Headshot
-    headshot: getUrl("ColeHeadshot.jpg")
+    headshot: getGlobalUrl("cole-swearingen-headshot.webp")
 };
 
 // ============================================
